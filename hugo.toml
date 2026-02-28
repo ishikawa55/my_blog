@@ -1,3 +1,11 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = 'https://ishikawa55.github.io/my_blog/'
+languageCode = 'ja-jp'
+title = 'ishikawa'
+
+# ここで導入したテーマを指定します
+theme = 'hugo-nes'
+
+[params]
+    title = "ishikawaの冒険の書"
+    # サイトの説明（ブラウザの検索結果などに表示されます）
+    description = "Pythonとセキュリティを学ぶエンジニアの記録"

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ishikawaの酒場 on ishikawa</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content in ishikawaの酒場 on ishikawa</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sun, 01 Mar 2026 02:05:30 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Start</title>
+      <link>http://localhost:1313/posts/start/</link>
+      <pubDate>Sun, 01 Mar 2026 02:05:30 +0900</pubDate>
+      <guid>http://localhost:1313/posts/start/</guid>
+      <description>ついにブログを開設しました！ こんにちは、ishikawa です。 このブログでは、以下のことに挑戦していこうと思います。&#xA;Python を使った開発（Djangoなど） 情報セキュリティ の学習記録 ドット絵 の世界観を追求したサイト制作 これからの予定 まずは GitHub Pages で公開することを目指します。</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,3 @@
+[submodule "themes/hugo-nes"]
+	path = themes/hugo-nes
+	url = git@github.com:rjayasinghe/hugo-nes-classic.git
