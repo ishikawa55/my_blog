@@ -1,6 +1,6 @@
 ---
 title: "ishikawaの酒場"
-date: 2026-03-01
+date: 2026-03-01T02:05:30+09:00
 draft: false
 ---
 
