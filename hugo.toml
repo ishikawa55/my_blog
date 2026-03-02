@@ -9,3 +9,21 @@ theme = 'hugo-nes'
     title = "ishikawaの冒険の書"
     # サイトの説明（ブラウザの検索結果などに表示されます）
     description = "Pythonとセキュリティを学ぶエンジニアの記録"
+
+[[menu.main]]
+    name = "Home"
+    pageRef = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "Blog"
+    pageRef = "/posts"
+    weight = 2
+
+[[menu.main]]
+    name = "About Me"
+    pageRef = "/about"
+    weight = 3
+
+[markup.goldmark.renderer]
+    unsafe = true

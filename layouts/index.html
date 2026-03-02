@@ -1,0 +1,19 @@
+{{ partial "header.html" . }}
+
+<div class="nes-container with-title is-centered">
+  <h3 class="title">{{ .Title }}</h3>
+  <div class="content">
+    {{ .Content }}
+  </div>
+</div>
+
+<section class="nes-container with-title" style="margin-top: 2rem;">
+  <h3 class="title">最新の投稿</h3>
+  <ul class="nes-list is-disc">
+    {{ range first 5 (where .Site.RegularPages "Section" "posts") }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+</section>
+
+{{ partial "footer.html" . }}

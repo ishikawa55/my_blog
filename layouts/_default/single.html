@@ -1,0 +1,14 @@
+{{ partial "header.html" . }}
+
+<article class="nes-container with-title">
+  <h3 class="title">{{ .Title }}</h3>
+  <div class="content">
+    {{ .Content }}
+  </div>
+</article>
+
+<div style="margin-top: 2rem; text-align: center;">
+  <a href="{{ .Site.BaseURL }}" class="nes-btn is-primary">戻る</a>
+</div>
+
+{{ partial "footer.html" . }}

@@ -1,0 +1,18 @@
+{{ partial "header.html" . }}
+
+<div class="nes-container with-title">
+  <h3 class="title">{{ .Title }}</h3>
+
+  <div class="content" style="margin-bottom: 2rem;">
+    {{ .Content }}
+  </div>
+  <hr>
+
+  <ul class="nes-list is-circle">
+    {{ range .Pages }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+</div>
+
+{{ partial "footer.html" . }}

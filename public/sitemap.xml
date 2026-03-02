@@ -3,13 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/my_blog/posts/</loc>
-    <lastmod>2026-03-01T02:05:30+09:00</lastmod>
+    <lastmod>2026-03-01T22:46:43+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/my_blog/posts/start/</loc>
+    <loc>http://localhost:1313/my_blog/about/</loc>
+    <lastmod>2026-03-01T22:34:24+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/my_blog/posts/xss/</loc>
     <lastmod>2026-03-01T02:05:30+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/my_blog/categories/</loc>
+    <lastmod>2026-03-01T02:05:30+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/my_blog/tags/hugo/</loc>
+    <lastmod>2026-03-01T02:05:30+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/my_blog/tags/security/</loc>
+    <lastmod>2026-03-01T02:05:30+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/my_blog/tags/</loc>
+    <lastmod>2026-03-01T02:05:30+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/my_blog/tags/xss/</loc>
+    <lastmod>2026-03-01T02:05:30+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/my_blog/categories/%E6%8A%80%E8%A1%93/</loc>
+    <lastmod>2026-03-01T02:05:30+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/my_blog/</loc>
+    <lastmod>2026-03-01T02:05:30+09:00</lastmod>
   </url>
 </urlset>
