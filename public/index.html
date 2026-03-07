@@ -104,22 +104,56 @@
             from {opacity: .4}
             to {opacity: 1}
         }
+
+         
+        @media (max-width: 768px) {
+        .nav-inner {
+            flex-direction: column !important;
+            gap: 15px !important;
+            padding: 20px 0 !important;
+        }
+
+        .nav-logo, .nav-menu, .nav-spacer {
+            flex: none !important;
+            width: 100% !important;
+            text-align: center !important;
+            justify-content: center !important;
+        }
+
+        .nav-menu {
+            gap: 20px !important;
+            font-size: 13px !important;
+        }
+
+        .nav-logo a {
+            font-size: 28px !important;
+        }
+
+        .btn-action {
+            padding: 5px 15px !important;
+            font-size: 12px !important;
+        }
+
+        .container {
+            padding: 0 15px !important;
+        }
+    }
     </style>
 </head>
 <body>
 <nav style="border-top: 1px solid #000; border-bottom: 1px solid #000; margin-top: 20px;">
-    <div class="container" style="display: flex; align-items: center; padding: 10px 0;">
-        <div style="flex: 1; display: flex; justify-content: flex-start;">
+    <div class="container nav-inner" style="display: flex; align-items: center; padding: 10px 0;">
+        <div class="nav-logo" style="flex: 1; display: flex; justify-content: flex-start;">
             <a href='./' style="font-family: 'EB Garamond', serif; font-size: 30px; font-weight: 700; letter-spacing: 0.02em;">
                 My Journey
             </a>
         </div>
-        <div style="flex: 2; display: flex; justify-content: center; gap: 60px; font-size: 14px; font-weight: 500; letter-spacing: 0.1em;">
+        <div class="nav-menu" style="flex: 2; display: flex; justify-content: center; gap: 60px; font-size: 14px; font-weight: 500; letter-spacing: 0.1em;">
             <a href='./'>ホーム</a>
             <a href='./about'>自己紹介</a>
             <a href='./posts'>アーカイブ</a>
         </div>
-        <div style="flex: 1;"></div>
+        <div class="nav-spacer" style="flex: 1;"></div>
     </div>
 </nav>
 
@@ -128,16 +162,16 @@
     <section class="hero-slideshow">
     <div class="slideshow-container">
         <div class="mySlides fade">
-            <img src="./images/slide1.png" alt="思考の断片1">
+            <img src="./images/mate1.png" alt="思考の断片1">
         </div>
         <div class="mySlides fade">
-            <img src="./images/slide2.png" alt="思考の断片2">
+            <img src="./images/mate2.png" alt="思考の断片2">
         </div>
         <div class="mySlides fade">
-            <img src="./images/slide3.png" alt="思考の断片3">
+            <img src="./images/mate3.png" alt="思考の断片3">
         </div>
         <div class="mySlides fade">
-            <img src="./images/slide4.png" alt="思考の断片4">
+            <img src="./images/mate4.png" alt="思考の断片4">
         </div>
     </div>
     </section>
@@ -170,7 +204,7 @@
         <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid #000; background-color: #000;">
             <iframe
                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                src="https://www.youtube.com/SAMPLE"
+                src="https://www.youtube.com/embed/pxGV43Tzua8"
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
