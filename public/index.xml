@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>挨拶 on ishikawa</title>
+    <title>ishikawa</title>
     <link>http://localhost:1313/my_blog/</link>
-    <description>Recent content in 挨拶 on ishikawa</description>
+    <description>Recent content on ishikawa</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 01 Mar 2026 22:34:24 +0900</lastBuildDate>
@@ -13,7 +13,7 @@
       <link>http://localhost:1313/my_blog/about/</link>
       <pubDate>Sun, 01 Mar 2026 22:34:24 +0900</pubDate>
       <guid>http://localhost:1313/my_blog/about/</guid>
-      <description>ブログ開設！ こんにちは ishikawa です。赤羽在住の大学生で普段は情報系の勉強をしています。完璧主義な性格で、文章を書くときに見栄えを気にすると全く書き進めることが出来ないので、とりあえず書いてみるというマインドを大切にしています。本が好きで特にSFと恋愛（愛について）を読むのですが、単純に面白いから読むという側面と、自分の中にある言語化できなかった感情を言語化してくれる作家さんと遇うという側面があります。恋愛は後者の色が強く、特に大学生になってから出会いの場（図書館）に行くことが多くなりました。恋愛は性格が大切なので一目惚れはしない性格ですが、、、個人的に素敵だなと思った方を紹介しておきます。いいね数が多いほどスワイプ数が多くなるのは本もマチアプも同じなのかもしれませんね。&#xA;技術、音楽、本、映像などについて自分の好きなモノを適当に書いていこうと思うので、雑多なブログになると思いますが付き合って頂けると幸いです。</description>
+      <description>ブログ開設！ こんにちは ishikawa です。赤羽在住の大学生で普段は情報系の勉強をしています。完璧主義で、文章を書くときに見栄えを気にすると全く書き進めることが出来ないので、とりあえず書いてみるというマインドで書き進めていきます。本が好きで特にSFと恋愛（愛について）を読むのですが、単純に面白いから読むという側面と、自分の中にある言語化できなかった感情を言語化してくれる作家さんに遇うという側面があります。恋愛は後者の色が強く、特に大学生になってから出会いの場（図書館）に行くことが多くなりました。一目惚れはしないタイプですが、、、個人的に素敵だなと思った方を紹介しておきます。いいね数が多いほどスワイプ数が多くなるのは本もマチアプも同じなのかもしれませんね。&#xA;最果タヒ 第1回 愛は全部キモい ──『ロミオとジュリエット』 技術、音楽、本、映像などについて自分の好きなモノを適当に書いていこうと思うので、雑多なブログになると思いますが付き合って頂けると幸いです。</description>
     </item>
     <item>
       <title>「unsafe = true」の裏側にあるXSSの脅威</title>

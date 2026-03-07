@@ -1,21 +1,15 @@
-<nav class="custom-navigation">
-  <div class="nav-left"></div>
-
-  <div class="nav-center">
-    <a href="{{ .Site.BaseURL }}" style="text-decoration: none; color: inherit;">
-      <img src="{{ "images/taru.png" | relURL }}" alt="Beer Icon" class="beer-icon beer-left">
-      
-      <span class="site-title">ishikawaの酒場</span>
-      
-      <img src="{{ "images/alcohol_mug.png" | relURL }}" alt="Beer Icon" class="beer-icon beer-right">
-    </a>
-  </div>
-
-  <div class="nav-right">
-    {{ range .Site.Menus.main }}
-      <a href="{{ .URL | relURL }}" class="nes-btn {{ if $.IsMenuCurrent "main" . }}is-primary{{ else }}is-default{{ end }}">
-        {{ .Name }}
-      </a>
-    {{ end }}
-  </div>
+<nav style="border-top: 1px solid #000; border-bottom: 1px solid #000; margin-top: 20px;">
+    <div class="container" style="display: flex; align-items: center; padding: 10px 0;">
+        <div style="flex: 1; display: flex; justify-content: flex-start;">
+            <a href='{{ "/" | relURL }}' style="font-family: 'EB Garamond', serif; font-size: 30px; font-weight: 700; letter-spacing: 0.02em;">
+                My Journey
+            </a>
+        </div>
+        <div style="flex: 2; display: flex; justify-content: center; gap: 60px; font-size: 14px; font-weight: 500; letter-spacing: 0.1em;">
+            <a href='{{ "/" | relURL }}'>ホーム</a>
+            <a href='{{ "about" | relURL }}'>自己紹介</a>
+            <a href='{{ "posts" | relURL }}'>アーカイブ</a>
+        </div>
+        <div style="flex: 1;"></div>
+    </div>
 </nav>

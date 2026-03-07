@@ -1,18 +1,17 @@
 {{ partial "header.html" . }}
-
-<div class="nes-container with-title">
-  <h3 class="title">{{ .Title }}</h3>
-
-  <div class="content" style="margin-bottom: 2rem;">
-    {{ .Content }}
-  </div>
-  <hr>
-
-  <ul class="nes-list is-circle">
-    {{ range .Pages }}
-      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-    {{ end }}
-  </ul>
+{{ partial "nav.html" . }}
+<div class="container" style="padding: 60px 0;">
+    <h1 style="font-size: 48px; text-align: center; margin-bottom: 60px;">アーカイブ</h1>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px;">
+        {{ range .Paginator.Pages }}
+        <article>
+            <a href="{{ .RelPermalink }}">
+                <img src="{{ .Params.image | default "/images/slide1.png" }}" style="width: 100%; aspect-ratio: 16/9; object-fit: cover;">
+                <h2 style="font-size: 24px; margin: 20px 0 10px;">{{ .Title }}</h2>
+                <p style="color: var(--text-muted); font-size: 14px;">{{ .Summary | truncate 150 }}</p>
+            </a>
+        </article>
+        {{ end }}
+    </div>
 </div>
-
 {{ partial "footer.html" . }}

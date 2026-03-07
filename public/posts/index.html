@@ -1,231 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head><script src="/my_blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=my_blog/livereload" data-no-instant defer></script>
-    <title>記事一覧</title>
-
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-    <link href="https://unpkg.com/nes.css/css/nes.min.css" rel="stylesheet" />
-    <link href="/css/style.css" rel="stylesheet" />
-    <link href="/css/nav.css" rel="stylesheet" />
-    <link href="/css/misc.css" rel="stylesheet" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@100..700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts | ishikawa</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
 
     <style>
-     
-    body {
-        background-color: #f0f0f0;  
-        background-image: 
-            linear-gradient(#ffffff 1px, transparent 1px),  
-            linear-gradient(90deg, #ffffff 1px, transparent 1px);  
-        background-size: 20px 20px;  
-    }
+        html {
+            scrollbar-gutter: stable;
+        }
 
-     
-    @font-face {
-        font-family: 'KH-Dot-Hibiya-24';
-        src: url('/my_blog/fonts/KH-Dot-Hibiya-24.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-    }
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #666666;
+            --border-color: #000000;
+        }
 
-    .title, body {
-        font-family: "M PLUS 1 Code", monospace;
-    }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    h1, h2, h3 {
-        font-family: "KH-Dot-Hibiya-24", "Press Start 2P", system-ui !important;
-    }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 700;
+        }
 
-     
-    .custom-navigation {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px 50px;
-        width: 100%;
-        background-color: transparent;
-    }
+        a { color: inherit; text-decoration: none; transition: 0.3s; }
+        img { max-width: 100%; height: auto; }
 
-    .nav-left, .nav-right {
-        flex: 1;
-    }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto !important;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-    .nav-center {
-        flex: 2;
-        text-align: center;
-    }
-
-    .nav-center a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-        text-decoration: none;
-        color: inherit;
-    }
-
-     
-    .beer-icon {
-        width: 32px;
-        height: auto;
-        image-rendering: pixelated;
-        image-rendering: crisp-edges;
-    }
-
-     
-    .site-title {
-        font-family: "KH-Dot-Hibiya-24", "Press Start 2P", sans-serif;
-        font-size: 36px;
-        font-weight: bold;
-        white-space: nowrap;
-        letter-spacing: 2px;
+        hr { border: none; border-top: 1px solid var(--border-color); margin: 40px 0; }
 
          
-        background: linear-gradient(to bottom, #FFFFFF 40%, #FFCC00 40%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-
-        display: inline-block; 
-
-        filter: 
-            drop-shadow(2px 2px 0px #000) 
-            drop-shadow(-2px -2px 0px #000)
-            drop-shadow(2px -2px 0px #000) 
-            drop-shadow(-2px 2px 0px #000);
-    }
-
-    .nav-right {
-        display: flex;
-        justify-content: flex-end;
-        gap: 15px;
-    }
-
-     
-    @media (max-width: 900px) {
-        .custom-navigation {
-            flex-direction: column;
-            gap: 20px;
-            padding: 20px;
+        .btn-action {
+            display: inline-block !important;
+            background-color: #6a1b9a !important; 
+            color: #ffffff !important;
+            padding: 10px 28px !important;
+            border-radius: 50px !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            transition: background-color 0.3s ease;
         }
-        .nav-center a {
-            flex-direction: row;
+
+        .btn-action:hover {
+            background-color: #4a148c !important;
+            opacity: 1 !important;
         }
-        .nav-right {
-            justify-content: center;
+
+         
+        .hero-slideshow {
+            width: 100%;
+            margin-top: 40px;
+            margin-bottom: 20px;
         }
-    }
 
-     
-    code, pre {
-        font-family: "M PLUS 1 Code", monospace !important;
-        font-size: 0.9em;
-    }
+        .slideshow-container {
+            max-width: 1000px;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #000;
+        }
 
-     
-    pre {
-        background-color: #212529 !important;
-        color: #fff !important;
-        padding: 1rem !important;
-        border: 4px solid #000;
-        margin: 1.5rem 0;
-        overflow-x: auto;
-    }
+         
+        .mySlides {
+            display: none;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+        }
 
-     
-    :not(pre) > code {
-        background-color: #e0e0e0;
-        padding: 0.2rem 0.4rem;
-        border-radius: 4px;
-        color: #d81b60;
-    }
+        .mySlides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-     
-    .nes-container {
-        border-radius: 0 !important;
-        border: 4px solid #000 !important;
-        box-shadow: none !important;
-        position: relative;
+         
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
 
-        padding-top: 2.5rem !important; 
-        margin-top: 2rem;
-    }
-
-     
-    .nes-container > .title {
-        background-color: #f0f0f0 !important;
-        padding: 0 10px;
-        
-        font-family: "KH-Dot-Hibiya-24", "Press Start 2P", system-ui !important;
-        font-size: 24px !important; 
-        font-weight: bold;
-
-        position: absolute;
-        top: 0;
-        left: 20px;
-        transform: translateY(-50%);
-
-        display: inline-block;
-        margin: 0 !important;
-    }
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
     </style>
 </head>
-<body class="eggplant">
-<nav class="custom-navigation">
-  <div class="nav-left"></div>
-
-  <div class="nav-center">
-    <a href="http://localhost:1313/my_blog/" style="text-decoration: none; color: inherit;">
-      <img src="/my_blog/images/taru.png" alt="Beer Icon" class="beer-icon beer-left">
-      
-      <span class="site-title">ishikawaの酒場</span>
-      
-      <img src="/my_blog/images/alcohol_mug.png" alt="Beer Icon" class="beer-icon beer-right">
-    </a>
-  </div>
-
-  <div class="nav-right">
-    
-      <a href="/my_blog/" class="nes-btn is-default">
-        Home
-      </a>
-    
-      <a href="/my_blog/posts/" class="nes-btn is-primary">
-        Blog
-      </a>
-    
-      <a href="/my_blog/about/" class="nes-btn is-default">
-        About Me
-      </a>
-    
-  </div>
+<body>
+<nav style="border-top: 1px solid #000; border-bottom: 1px solid #000; margin-top: 20px;">
+    <div class="container" style="display: flex; align-items: center; padding: 10px 0;">
+        <div style="flex: 1; display: flex; justify-content: flex-start;">
+            <a href='../' style="font-family: 'EB Garamond', serif; font-size: 30px; font-weight: 700; letter-spacing: 0.02em;">
+                My Journey
+            </a>
+        </div>
+        <div style="flex: 2; display: flex; justify-content: center; gap: 60px; font-size: 14px; font-weight: 500; letter-spacing: 0.1em;">
+            <a href='../'>ホーム</a>
+            <a href='../about'>自己紹介</a>
+            <a href='../posts'>アーカイブ</a>
+        </div>
+        <div style="flex: 1;"></div>
+    </div>
 </nav>
 
-<section class="nes-container with-title main-centered">
-
-
-<div class="nes-container with-title">
-  <h3 class="title">記事一覧</h3>
-
-  <div class="content" style="margin-bottom: 2rem;">
-    <!-- Blog -->
-<h1 id="貯蔵庫">貯蔵庫</h1>
-<p>ここは酒場の奥にある<strong>貯蔵庫</strong></p>
-
-  </div>
-  <hr>
-
-  <ul class="nes-list is-circle">
-    
-      <li><a href="/my_blog/posts/xss/">「unsafe = true」の裏側にあるXSSの脅威</a></li>
-    
-  </ul>
+<div class="container" style="padding: 60px 0;">
+    <h1 style="font-size: 48px; text-align: center; margin-bottom: 60px;">アーカイブ</h1>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px;">
+        
+        <article>
+            <a href="../posts/xss/">
+                <img src="../images/slide1.png" style="width: 100%; aspect-ratio: 16/9; object-fit: cover;">
+                <h2 style="font-size: 24px; margin: 20px 0 10px;">「unsafe = true」の裏側にあるXSSの脅威</h2>
+                <p style="color: var(--text-muted); font-size: 14px;">サイトカスタマイズをしていたところ、セキュリティの壁に当たったので記録しておく。
+ドット絵のチェックボックスを表示 「ishikawaの酒場」のフロントページに、現在の活動状況を示すチェックボックスを作ろうとした時のことだ。Markdown記法でチェックボックスを作成するとビュレットが表示されてしま …</p>
+            </a>
+        </article>
+        
+    </div>
 </div>
-
 </section>
 </body>
 </html>

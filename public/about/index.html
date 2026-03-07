@@ -1,229 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head><script src="/my_blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=my_blog/livereload" data-no-instant defer></script>
-    <title>About Me</title>
-
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-    <link href="https://unpkg.com/nes.css/css/nes.min.css" rel="stylesheet" />
-    <link href="/css/style.css" rel="stylesheet" />
-    <link href="/css/nav.css" rel="stylesheet" />
-    <link href="/css/misc.css" rel="stylesheet" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@100..700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | ishikawa</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
 
     <style>
-     
-    body {
-        background-color: #f0f0f0;  
-        background-image: 
-            linear-gradient(#ffffff 1px, transparent 1px),  
-            linear-gradient(90deg, #ffffff 1px, transparent 1px);  
-        background-size: 20px 20px;  
-    }
+        html {
+            scrollbar-gutter: stable;
+        }
 
-     
-    @font-face {
-        font-family: 'KH-Dot-Hibiya-24';
-        src: url('/my_blog/fonts/KH-Dot-Hibiya-24.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-    }
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #666666;
+            --border-color: #000000;
+        }
 
-    .title, body {
-        font-family: "M PLUS 1 Code", monospace;
-    }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    h1, h2, h3 {
-        font-family: "KH-Dot-Hibiya-24", "Press Start 2P", system-ui !important;
-    }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 700;
+        }
 
-     
-    .custom-navigation {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px 50px;
-        width: 100%;
-        background-color: transparent;
-    }
+        a { color: inherit; text-decoration: none; transition: 0.3s; }
+        img { max-width: 100%; height: auto; }
 
-    .nav-left, .nav-right {
-        flex: 1;
-    }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto !important;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-    .nav-center {
-        flex: 2;
-        text-align: center;
-    }
-
-    .nav-center a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-        text-decoration: none;
-        color: inherit;
-    }
-
-     
-    .beer-icon {
-        width: 32px;
-        height: auto;
-        image-rendering: pixelated;
-        image-rendering: crisp-edges;
-    }
-
-     
-    .site-title {
-        font-family: "KH-Dot-Hibiya-24", "Press Start 2P", sans-serif;
-        font-size: 36px;
-        font-weight: bold;
-        white-space: nowrap;
-        letter-spacing: 2px;
+        hr { border: none; border-top: 1px solid var(--border-color); margin: 40px 0; }
 
          
-        background: linear-gradient(to bottom, #FFFFFF 40%, #FFCC00 40%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-
-        display: inline-block; 
-
-        filter: 
-            drop-shadow(2px 2px 0px #000) 
-            drop-shadow(-2px -2px 0px #000)
-            drop-shadow(2px -2px 0px #000) 
-            drop-shadow(-2px 2px 0px #000);
-    }
-
-    .nav-right {
-        display: flex;
-        justify-content: flex-end;
-        gap: 15px;
-    }
-
-     
-    @media (max-width: 900px) {
-        .custom-navigation {
-            flex-direction: column;
-            gap: 20px;
-            padding: 20px;
+        .btn-action {
+            display: inline-block !important;
+            background-color: #6a1b9a !important; 
+            color: #ffffff !important;
+            padding: 10px 28px !important;
+            border-radius: 50px !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            transition: background-color 0.3s ease;
         }
-        .nav-center a {
-            flex-direction: row;
+
+        .btn-action:hover {
+            background-color: #4a148c !important;
+            opacity: 1 !important;
         }
-        .nav-right {
-            justify-content: center;
+
+         
+        .hero-slideshow {
+            width: 100%;
+            margin-top: 40px;
+            margin-bottom: 20px;
         }
-    }
 
-     
-    code, pre {
-        font-family: "M PLUS 1 Code", monospace !important;
-        font-size: 0.9em;
-    }
+        .slideshow-container {
+            max-width: 1000px;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #000;
+        }
 
-     
-    pre {
-        background-color: #212529 !important;
-        color: #fff !important;
-        padding: 1rem !important;
-        border: 4px solid #000;
-        margin: 1.5rem 0;
-        overflow-x: auto;
-    }
+         
+        .mySlides {
+            display: none;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+        }
 
-     
-    :not(pre) > code {
-        background-color: #e0e0e0;
-        padding: 0.2rem 0.4rem;
-        border-radius: 4px;
-        color: #d81b60;
-    }
+        .mySlides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-     
-    .nes-container {
-        border-radius: 0 !important;
-        border: 4px solid #000 !important;
-        box-shadow: none !important;
-        position: relative;
+         
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
 
-        padding-top: 2.5rem !important; 
-        margin-top: 2rem;
-    }
-
-     
-    .nes-container > .title {
-        background-color: #f0f0f0 !important;
-        padding: 0 10px;
-        
-        font-family: "KH-Dot-Hibiya-24", "Press Start 2P", system-ui !important;
-        font-size: 24px !important; 
-        font-weight: bold;
-
-        position: absolute;
-        top: 0;
-        left: 20px;
-        transform: translateY(-50%);
-
-        display: inline-block;
-        margin: 0 !important;
-    }
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
     </style>
 </head>
-<body class="eggplant">
-<nav class="custom-navigation">
-  <div class="nav-left"></div>
-
-  <div class="nav-center">
-    <a href="http://localhost:1313/my_blog/" style="text-decoration: none; color: inherit;">
-      <img src="/my_blog/images/taru.png" alt="Beer Icon" class="beer-icon beer-left">
-      
-      <span class="site-title">ishikawaの酒場</span>
-      
-      <img src="/my_blog/images/alcohol_mug.png" alt="Beer Icon" class="beer-icon beer-right">
-    </a>
-  </div>
-
-  <div class="nav-right">
-    
-      <a href="/my_blog/" class="nes-btn is-default">
-        Home
-      </a>
-    
-      <a href="/my_blog/posts/" class="nes-btn is-default">
-        Blog
-      </a>
-    
-      <a href="/my_blog/about/" class="nes-btn is-primary">
-        About Me
-      </a>
-    
-  </div>
+<body>
+<nav style="border-top: 1px solid #000; border-bottom: 1px solid #000; margin-top: 20px;">
+    <div class="container" style="display: flex; align-items: center; padding: 10px 0;">
+        <div style="flex: 1; display: flex; justify-content: flex-start;">
+            <a href='../' style="font-family: 'EB Garamond', serif; font-size: 30px; font-weight: 700; letter-spacing: 0.02em;">
+                My Journey
+            </a>
+        </div>
+        <div style="flex: 2; display: flex; justify-content: center; gap: 60px; font-size: 14px; font-weight: 500; letter-spacing: 0.1em;">
+            <a href='../'>ホーム</a>
+            <a href='../about'>自己紹介</a>
+            <a href='../posts'>アーカイブ</a>
+        </div>
+        <div style="flex: 1;"></div>
+    </div>
 </nav>
 
-<section class="nes-container with-title main-centered">
-
-
-<article class="nes-container with-title">
-  <h3 class="title">About Me</h3>
-  <div class="content">
-    <!-- About -->
+<article class="container" style="padding: 80px 0; max-width: 700px;">
+    <header style="text-align: center; margin-bottom: 60px;">
+        <p style="color: var(--text-muted); font-size: 14px;">2026年3月1日</p>
+        <h1 style="font-family: 'EB Garamond', serif; font-size: 42px; line-height: 1.3;">About Me</h1>
+    </header>
+    <div style="font-size: 17px; line-height: 2; color: #333;">
+        <!-- About -->
 <h1 id="ブログ開設">ブログ開設！</h1>
-<p>こんにちは <strong>ishikawa</strong> です。赤羽在住の大学生で普段は情報系の勉強をしています。<strong>完璧主義</strong>な性格で、文章を書くときに見栄えを気にすると全く書き進めることが出来ないので、<strong>とりあえず書いてみる</strong>というマインドを大切にしています。本が好きで特にSFと恋愛（愛について）を読むのですが、<strong>単純に面白いから読む</strong>という側面と、自分の中にある言語化できなかった感情を<strong>言語化してくれる作家さんと遇う</strong>という側面があります。恋愛は後者の色が強く、特に大学生になってから<strong>出会いの場</strong>（図書館）に行くことが多くなりました。恋愛は性格が大切なので一目惚れはしない性格ですが、、、個人的に素敵だなと思った方を紹介しておきます。<del>いいね数が多いほどスワイプ数が多くなるのは本もマチアプも同じなのかもしれませんね。</del></p>
-<p><a href="https://tanemaki.iwanami.co.jp/posts/5946"><img src="https://tanemaki.iwanami.co.jp/medias/zaAc5/images/post_mainImage_ID5946_20220804143012.jpg" alt="最果タヒ 第1回 愛は全部キモい ──『ロミオとジュリエット』"></a></p>
+<p>こんにちは <strong>ishikawa</strong> です。赤羽在住の大学生で普段は情報系の勉強をしています。完璧主義で、文章を書くときに見栄えを気にすると全く書き進めることが出来ないので、<strong>とりあえず書いてみる</strong>というマインドで書き進めていきます。本が好きで特にSFと恋愛（愛について）を読むのですが、<strong>単純に面白いから読む</strong>という側面と、自分の中にある言語化できなかった感情を<strong>言語化してくれる作家さんに遇う</strong>という側面があります。恋愛は後者の色が強く、特に大学生になってから<strong>出会いの場</strong>（図書館）に行くことが多くなりました。一目惚れはしないタイプですが、、、個人的に素敵だなと思った方を紹介しておきます。<del>いいね数が多いほどスワイプ数が多くなるのは本もマチアプも同じなのかもしれませんね。</del></p>
+<div style="position: relative; display: inline-block; width: 100%;">
+  <a href="https://tanemaki.iwanami.co.jp/posts/5946">
+    <img src="../images/mate5.png" style="width: 100%; display: block; border: 1px solid #000;">
+  </a>
+  <div style="position: absolute; bottom: 15px; right: 15px; background: rgba(255, 255, 255, 0.8); padding: 5px 12px; border: 1px solid #000; font-family: 'Noto Serif JP', serif; font-size: 12px; color: #1a1a1a;">
+    最果タヒ 第1回 愛は全部キモい ──『ロミオとジュリエット』
+  </div>
+</div>
 <p>技術、音楽、本、映像などについて自分の好きなモノを適当に書いていこうと思うので、雑多なブログになると思いますが付き合って頂けると幸いです。</p>
 
-  </div>
+    </div>
+    <div style="margin-top: 60px; border-top: 1px solid #eee; padding-top: 20px;">
+        <a href="../posts">← アーカイブへ</a>
+    </div>
 </article>
-
-<div style="margin-top: 2rem; text-align: center;">
-  <a href="http://localhost:1313/my_blog/" class="nes-btn is-primary">戻る</a>
-</div>
-
 </section>
 </body>
 </html>

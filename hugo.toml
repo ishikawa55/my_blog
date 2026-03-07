@@ -2,13 +2,15 @@ baseURL = 'https://ishikawa55.github.io/my_blog/'
 languageCode = 'ja-jp'
 title = 'ishikawa'
 
-# ここで導入したテーマを指定します
+relativeURLs = true
+canonifyURLs = true
+
 theme = 'hugo-nes'
 
 [params]
-    title = "ishikawaの冒険の書"
-    # サイトの説明（ブラウザの検索結果などに表示されます）
-    description = "Pythonとセキュリティを学ぶエンジニアの記録"
+    title = "（仮）タイトル"
+    description = "Python、情報セキュリティ"
+    author = "ishikawa"
 
 [[menu.main]]
     name = "Home"
@@ -25,5 +27,12 @@ theme = 'hugo-nes'
     pageRef = "/about"
     weight = 3
 
+# 記事一覧の表示件数
+paginate = 6
+
 [markup.goldmark.renderer]
     unsafe = true
+
+[taxonomies]
+    tag = "tags"
+    category = "categories"
