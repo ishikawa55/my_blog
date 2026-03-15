@@ -19,10 +19,12 @@
             --text-main: #1a1a1a;
             --text-muted: #666666;
             --border-color: #000000;
+            --purple-accent: #6a1b9a;
         }
 
         body {
-            background-color: var(--bg-color);
+             
+            background-color: transparent;
             color: var(--text-main);
             font-family: 'Noto Sans JP', sans-serif;
             margin: 0;
@@ -66,44 +68,56 @@
             opacity: 1 !important;
         }
 
-         
-        .hero-slideshow {
+        .hero-gallery {
             width: 100%;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-
-        .slideshow-container {
-            max-width: 1000px;
-            margin: auto;
+            margin: 60px 0;
+            overflow: hidden;
+            cursor: grab;
             position: relative;
-            overflow: hidden;
-            border: 1px solid #000;
+            user-select: none;
         }
 
-         
-        .mySlides {
+        .hero-gallery:active {
+            cursor: grabbing;
+        }
+
+        .gallery-scroll-container {
+            display: flex;
+            gap: 40px;
+            padding: 40px 20px;
+            will-change: transform;
+        }
+
+        .gallery-scroll-container::-webkit-scrollbar {
             display: none;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
         }
 
-        .mySlides img {
+        .gallery-card {
+            flex: 0 0 600px;
+            height: 350px;
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+            border: 2px solid var(--purple-accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            pointer-events: none;
+        }
+
+        .card-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
 
-         
-        .fade {
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
 
-        @keyframes fade {
-            from {opacity: .4}
-            to {opacity: 1}
-        }
+
 
          
         @media (max-width: 768px) {
@@ -137,52 +151,77 @@
         .container {
             padding: 0 15px !important;
         }
-    }
+        }
 
-     
-    #three-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background-color: #ffffff;
-    }
+         
+        #three-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: #ffffff;
+        }
     </style>
 </head>
 <body>
-<nav style="border-top: 1px solid #000; border-bottom: 1px solid #000; margin-top: 20px;">
-    <div class="container nav-inner" style="display: flex; align-items: center; padding: 10px 0;">
+<nav style="border-top: 4px solid #6a1b9a; border-bottom: 4px solid #6a1b9a; margin-top: 30px; margin-bottom: 30px; width: 100%; display: flow-root;">
+    <div class="container nav-inner" style="display: flex; align-items: center; padding: 25px 20px;">
+        
         <div class="nav-logo" style="flex: 1; display: flex; justify-content: flex-start;">
-            <a href='http://localhost:1313/' style="font-family: 'EB Garamond', serif; font-size: 30px; font-weight: 700; letter-spacing: 0.02em;">
+            <a href='http://localhost:1313/' style="font-family: 'EB Garamond', serif; font-size: 34px; font-weight: 500; letter-spacing: -0.02em; line-height: 1;">
                 My Journey
             </a>
         </div>
-        <div class="nav-menu" style="flex: 2; display: flex; justify-content: center; gap: 60px; font-size: 14px; font-weight: 500; letter-spacing: 0.1em;">
+
+        <div class="nav-menu" style="flex: 2; display: flex; justify-content: center; align-items: center; gap: 50px; font-size: 15px; font-weight: 500; letter-spacing: 0.1em;">
             <a href='http://localhost:1313/'>ホーム</a>
             <a href='http://localhost:1313/about'>自己紹介</a>
-            <a href='http://localhost:1313/posts'>アーカイブ</a>
-        </div>
+            <a href='http://localhost:1313/posts'>アーカイブ</a> </div>
+
         <div class="nav-spacer" style="flex: 1;"></div>
+        
     </div>
 </nav>
 
-
 <main class="container">
-    <section class="hero-slideshow">
-    <div class="slideshow-container">
-        <div class="mySlides fade">
-            <img src="http://localhost:1313/images/mate1.png" alt="思考の断片1">
+    <section class="hero-gallery", id="hero-gallery">
+    <div class="gallery-scroll-container", id="scroll-container">
+        <div class="gallery-card">
+            <div class="card-inner">
+                <img src="http://localhost:1313/images/image-01.png" class="card-img">
+            </div>
         </div>
-        <div class="mySlides fade">
-            <img src="http://localhost:1313/images/mate2.png" alt="思考の断片2">
+        <div class="gallery-card">
+            <div class="card-inner">
+                <img src="http://localhost:1313/images/image-02.png" class="card-img">
+            </div>
         </div>
-        <div class="mySlides fade">
-            <img src="http://localhost:1313/images/mate3.png" alt="思考の断片3">
+        <div class="gallery-card">
+            <div class="card-inner">
+                <img src="http://localhost:1313/images/image-03.png" class="card-img">
+            </div>
         </div>
-        <div class="mySlides fade">
-            <img src="http://localhost:1313/images/mate4.png" alt="思考の断片4">
+        <div class="gallery-card">
+            <div class="card-inner">
+                <img src="http://localhost:1313/images/image-04.png" class="card-img">
+            </div>
+        </div>
+        <div class="gallery-card">
+            <div class="card-inner">
+                <img src="http://localhost:1313/images/image-05.png" class="card-img">
+            </div>
+        </div>
+        <div class="gallery-card">
+            <div class="card-inner">
+                <img src="http://localhost:1313/images/image-06.png" class="card-img">
+            </div>
+        </div>
+        <div class="gallery-card">
+            <div class="card-inner">
+                <img src="http://localhost:1313/images/image-07.png" class="card-img">
+            </div>
         </div>
     </div>
     </section>
@@ -232,34 +271,190 @@
         <div>
             <p style="font-size: 14px; color: var(--text-muted);">ブログについて</p>
             <h2 style="font-family: 'EB Garamond', serif; font-size: 36px; margin: 10px 0;">Author: ishikawa</h2>
-            <p>赤羽在住の情報系大学生。Pythonや情報セキュリティを学び、食と映像を愛する日々を送ってます。</p>
+            <p>赤羽在住の情報系大学生。<br>Pythonや情報セキュリティを学び、<br>食と映像を愛する日々を送ってます。</p>
             <a href="http://localhost:1313/about" class="btn-action">続きを読む</a>
         </div>
     </section>
 </main>
 
 <script>
-    let slideIndex = 0;
-    showSlides();
+    const container = document.getElementById('hero-gallery');
+    const scrollContent = document.getElementById('scroll-container');
+    
+    
+    const cards = Array.from(scrollContent.querySelectorAll('.gallery-card'));
+    cards.forEach(card => {
+        const clone = card.cloneNode(true);
+        scrollContent.appendChild(clone); 
+    });
 
-    function showSlides() {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
+    let scrollPos = 0;
+    let autoSpeed = 1.0; 
+    let isDragging = false;
+    let startX, scrollLeftAtStart;
+
+    
+    function update() {
+        if (!isDragging) {
+            scrollPos += autoSpeed;
+            const maxScroll = scrollContent.scrollWidth / 2;
+            if (scrollPos >= maxScroll) {
+                scrollPos = 0;
+            }
+            container.scrollLeft = scrollPos;
         }
-        slideIndex++;
-        
-        if (slideIndex > slides.length) {slideIndex = 1}
-        
-        slides[slideIndex-1].style.display = "block";
-        
-        setTimeout(showSlides, 5000); 
+        requestAnimationFrame(update);
     }
+    requestAnimationFrame(update);
+
+    
+    container.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.pageX - container.offsetLeft;
+        scrollLeftAtStart = container.scrollLeft;
+        autoSpeed = 0;
+    });
+
+    window.addEventListener('mouseup', () => {
+        isDragging = false;
+        autoSpeed = 1.0;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (!isDragging) {
+            handleParallax(e);
+            return;
+        }
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const walk = (x - startX) * 2; 
+        scrollPos = scrollLeftAtStart - walk;
+        container.scrollLeft = scrollPos;
+    });
+
+    
+    function handleParallax(e) {
+        const allCards = document.querySelectorAll('.gallery-card');
+        allCards.forEach(card => {
+            const inner = card.querySelector('.card-inner');
+            const rect = card.getBoundingClientRect();
+
+            if (rect.left < window.innerWidth && rect.right > 0) {
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                const mouseX = e.clientX - centerX;
+                const mouseY = e.clientY - centerY;
+
+                const rotateX = (mouseY / (window.innerHeight / 2)) * -10;
+                const rotateY = (mouseX / (window.innerWidth / 2)) * 10;
+
+                inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            }
+        });
+    }
+
+    
+    container.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = e.touches[0].pageX - container.offsetLeft;
+        scrollLeftAtStart = container.scrollLeft;
+        autoSpeed = 0;
+    });
+    container.addEventListener('touchend', () => {
+        isDragging = false;
+        autoSpeed = 1.0;
+    });
+    container.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const x = e.touches[0].pageX - container.offsetLeft;
+        const walk = (x - startX) * 2;
+        scrollPos = scrollLeftAtStart - walk;
+        container.scrollLeft = scrollPos;
+    });
+
 </script>
 
-<div id="three-bg"></div><script src="http://localhost:1313/js/bg-pulse.min.36b21a6227e1fc6b33eccae858b08f7535176d1d16255cf4926a26c95739533e.js" type="module" defer></script><footer style="margin-top: 100px; padding-bottom: 60px; text-align: center; position: relative; z-index: 10;">
+<div id="three-bg"></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.150.0/build/three.module.js"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+
+const init = () => {
+    const container = document.getElementById('three-bg');
+    if (!container) return;
+
+    
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
+    camera.position.z = 1000;
+
+    
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+
+    
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(1500 * 3);
+    for (let i = 0; i < 1500 * 3; i++) {
+        positions[i] = (Math.random() - 0.5) * 2000;
+    }
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    const material = new THREE.PointsMaterial({
+        size: 3,
+        color: 0x6a1b9a, 
+        transparent: true,
+        opacity: 0.6
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    
+    let mouseX = 0, mouseY = 0;
+    document.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX - window.innerWidth / 2) * 0.5;
+        mouseY = (e.clientY - window.innerHeight / 2) * 0.5;
+    });
+
+    
+    const animate = () => {
+        requestAnimationFrame(animate);
+        particles.rotation.x += 0.0005;
+        particles.rotation.y += 0.0005;
+        
+        
+        camera.position.x += (mouseX - camera.position.x) * 0.05;
+        camera.position.y += (-mouseY - camera.position.y) * 0.05;
+        camera.lookAt(scene.position);
+        
+        renderer.render(scene, camera);
+    };
+    animate();
+
+    
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+};
+
+
+init();
+</script>
+
+<footer style="margin-top: 100px; padding-bottom: 60px; text-align: center; position: relative; z-index: 10;">
     <hr style="border: none; border-top: 1px solid #eee; margin-bottom: 40px;">
     <p style="font-family: 'EB Garamond', serif; font-size: 18px; letter-spacing: 0.05em; margin-bottom: 10px;">
         My Journey
@@ -268,6 +463,6 @@
         &copy; 2026 ishikawa. All Rights Reserved.
     </p>
 </footer>
-
 </body>
 </html>
+

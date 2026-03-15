@@ -1,15 +1,18 @@
-<nav style="border-top: 1px solid #000; border-bottom: 1px solid #000; margin-top: 20px;">
-    <div class="container nav-inner" style="display: flex; align-items: center; padding: 10px 0;">
+<nav style="border-top: 4px solid #6a1b9a; border-bottom: 4px solid #6a1b9a; margin-top: 30px; margin-bottom: 30px; width: 100%; display: flow-root;">
+    <div class="container nav-inner" style="display: flex; align-items: center; padding: 25px 20px;">
+        
         <div class="nav-logo" style="flex: 1; display: flex; justify-content: flex-start;">
-            <a href='{{ "/" | relURL }}' style="font-family: 'EB Garamond', serif; font-size: 30px; font-weight: 700; letter-spacing: 0.02em;">
+            <a href='{{ "/" | relURL }}' style="font-family: 'EB Garamond', serif; font-size: 34px; font-weight: 500; letter-spacing: -0.02em; line-height: 1;">
                 My Journey
             </a>
         </div>
-        <div class="nav-menu" style="flex: 2; display: flex; justify-content: center; gap: 60px; font-size: 14px; font-weight: 500; letter-spacing: 0.1em;">
+
+        <div class="nav-menu" style="flex: 2; display: flex; justify-content: center; align-items: center; gap: 50px; font-size: 15px; font-weight: 500; letter-spacing: 0.1em;">
             <a href='{{ "/" | relURL }}'>ホーム</a>
             <a href='{{ "about" | relURL }}'>自己紹介</a>
-            <a href='{{ "posts" | relURL }}'>アーカイブ</a>
-        </div>
+            <a href='{{ "posts" | relURL }}'>アーカイブ</a> </div>
+
         <div class="nav-spacer" style="flex: 1;"></div>
+        
     </div>
 </nav>

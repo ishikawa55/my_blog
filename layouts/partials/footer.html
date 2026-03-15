@@ -1,17 +1,82 @@
-{{- /* 1. JSのビルド（最上部で定義） */ -}}
-{{- $js := "" -}}
-{{- with resources.Get "js/bg-pulse.js" -}}
-  {{- $js = . | js.Build (dict "type" "module") | minify | fingerprint -}}
-{{- end -}}
-
 <div id="three-bg"></div>
 
-{{- /* 3. JSの読み込み（$jsが存在する場合のみ） */ -}}
-{{- if $js -}}
-  <script src="{{ $js.Permalink }}" type="module" defer></script>
-{{- else -}}
-  <script>console.error("Hugo: assets/js/bg-pulse.js が見つかりません。");</script>
-{{- end -}}
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.150.0/build/three.module.js"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+
+const init = () => {
+    const container = document.getElementById('three-bg');
+    if (!container) return;
+
+    // シーンとカメラの設定
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
+    camera.position.z = 1000;
+
+    // レンダラーの設定（背景を透明にする alpha: true）
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+
+    // パーティクルの生成（セキュリティ・パルス：1500個の紫の光）
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(1500 * 3);
+    for (let i = 0; i < 1500 * 3; i++) {
+        positions[i] = (Math.random() - 0.5) * 2000;
+    }
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    const material = new THREE.PointsMaterial({
+        size: 3,
+        color: 0x6a1b9a, // 統一されたアクセントカラーの紫
+        transparent: true,
+        opacity: 0.6
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    // マウス連動のロジック
+    let mouseX = 0, mouseY = 0;
+    document.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX - window.innerWidth / 2) * 0.5;
+        mouseY = (e.clientY - window.innerHeight / 2) * 0.5;
+    });
+
+    // アニメーションループ
+    const animate = () => {
+        requestAnimationFrame(animate);
+        particles.rotation.x += 0.0005;
+        particles.rotation.y += 0.0005;
+        
+        // カメラの動きに遊び（ラグ）を持たせる
+        camera.position.x += (mouseX - camera.position.x) * 0.05;
+        camera.position.y += (-mouseY - camera.position.y) * 0.05;
+        camera.lookAt(scene.position);
+        
+        renderer.render(scene, camera);
+    };
+    animate();
+
+    // 画面リサイズへの対応
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+};
+
+// 実行
+init();
+</script>
 
 <footer style="margin-top: 100px; padding-bottom: 60px; text-align: center; position: relative; z-index: 10;">
     <hr style="border: none; border-top: 1px solid #eee; margin-bottom: 40px;">
@@ -22,6 +87,5 @@
         &copy; {{ now.Format "2006" }} ishikawa. All Rights Reserved.
     </p>
 </footer>
-
 </body>
 </html>

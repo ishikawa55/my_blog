@@ -6,7 +6,7 @@
         {{ range .Paginator.Pages }}
         <article>
             <a href="{{ .RelPermalink }}">
-                <img src="{{ .Params.image | default "/images/slide1.png" }}" style="width: 100%; aspect-ratio: 16/9; object-fit: cover;">
+                <img src="{{ .Params.image | default "/images/image-01.png" }}" style="width: 100%; aspect-ratio: 16/9; object-fit: cover;">
                 <h2 style="font-size: 24px; margin: 20px 0 10px;">{{ .Title }}</h2>
                 <p style="color: var(--text-muted); font-size: 14px;">{{ .Summary | truncate 150 }}</p>
             </a>

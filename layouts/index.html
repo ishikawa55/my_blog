@@ -2,19 +2,42 @@
 {{ partial "nav.html" . }}
 
 <main class="container">
-    <section class="hero-slideshow">
-    <div class="slideshow-container">
-        <div class="mySlides fade">
-            <img src="{{ "images/mate1.png" | relURL }}" alt="思考の断片1">
+    <section class="hero-gallery", id="hero-gallery">
+    <div class="gallery-scroll-container", id="scroll-container">
+        <div class="gallery-card">
+            <div class="card-inner">
+                <img src="{{ "images/image-01.png" | relURL }}" class="card-img">
+            </div>
         </div>
-        <div class="mySlides fade">
-            <img src="{{ "images/mate2.png" | relURL }}" alt="思考の断片2">
+        <div class="gallery-card">
+            <div class="card-inner">
+                <img src="{{ "images/image-02.png" | relURL }}" class="card-img">
+            </div>
         </div>
-        <div class="mySlides fade">
-            <img src="{{ "images/mate3.png" | relURL }}" alt="思考の断片3">
+        <div class="gallery-card">
+            <div class="card-inner">
+                <img src="{{ "images/image-03.png" | relURL }}" class="card-img">
+            </div>
         </div>
-        <div class="mySlides fade">
-            <img src="{{ "images/mate4.png" | relURL }}" alt="思考の断片4">
+        <div class="gallery-card">
+            <div class="card-inner">
+                <img src="{{ "images/image-04.png" | relURL }}" class="card-img">
+            </div>
+        </div>
+        <div class="gallery-card">
+            <div class="card-inner">
+                <img src="{{ "images/image-05.png" | relURL }}" class="card-img">
+            </div>
+        </div>
+        <div class="gallery-card">
+            <div class="card-inner">
+                <img src="{{ "images/image-06.png" | relURL }}" class="card-img">
+            </div>
+        </div>
+        <div class="gallery-card">
+            <div class="card-inner">
+                <img src="{{ "images/image-07.png" | relURL }}" class="card-img">
+            </div>
         </div>
     </div>
     </section>
@@ -63,31 +86,107 @@
         <div>
             <p style="font-size: 14px; color: var(--text-muted);">ブログについて</p>
             <h2 style="font-family: 'EB Garamond', serif; font-size: 36px; margin: 10px 0;">Author: ishikawa</h2>
-            <p>赤羽在住の情報系大学生。Pythonや情報セキュリティを学び、食と映像を愛する日々を送ってます。</p>
+            <p>赤羽在住の情報系大学生。<br>Pythonや情報セキュリティを学び、<br>食と映像を愛する日々を送ってます。</p>
             <a href="/about" class="btn-action">続きを読む</a>
         </div>
     </section>
 </main>
 
 <script>
-    let slideIndex = 0;
-    showSlides();
+    const container = document.getElementById('hero-gallery');
+    const scrollContent = document.getElementById('scroll-container');
+    
+    // 無限ループのためのクローン
+    const cards = Array.from(scrollContent.querySelectorAll('.gallery-card'));
+    cards.forEach(card => {
+        const clone = card.cloneNode(true);
+        scrollContent.appendChild(clone); // 後ろにコピーを追加
+    });
 
-    function showSlides() {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        // すべてのスライドを一旦非表示に
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
+    let scrollPos = 0;
+    let autoSpeed = 1.0; // 自動スクロールの速さ
+    let isDragging = false;
+    let startX, scrollLeftAtStart;
+
+    // 自動スクロール
+    function update() {
+        if (!isDragging) {
+            scrollPos += autoSpeed;
+            const maxScroll = scrollContent.scrollWidth / 2;
+            if (scrollPos >= maxScroll) {
+                scrollPos = 0;
+            }
+            container.scrollLeft = scrollPos;
         }
-        slideIndex++;
-        // 最後のスライドの次は最初に戻る
-        if (slideIndex > slides.length) {slideIndex = 1}
-        // 現在のスライドを表示
-        slides[slideIndex-1].style.display = "block";
-        // 5秒（5000ミリ秒）ごとに切り替え
-        setTimeout(showSlides, 5000); 
+        requestAnimationFrame(update);
     }
+    requestAnimationFrame(update);
+
+    // ドラッグ / スワイプ操作
+    container.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.pageX - container.offsetLeft;
+        scrollLeftAtStart = container.scrollLeft;
+        autoSpeed = 0;
+    });
+
+    window.addEventListener('mouseup', () => {
+        isDragging = false;
+        autoSpeed = 1.0;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (!isDragging) {
+            handleParallax(e);
+            return;
+        }
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const walk = (x - startX) * 2; // スライドの速さ調整
+        scrollPos = scrollLeftAtStart - walk;
+        container.scrollLeft = scrollPos;
+    });
+
+    // パララックス効果
+    function handleParallax(e) {
+        const allCards = document.querySelectorAll('.gallery-card');
+        allCards.forEach(card => {
+            const inner = card.querySelector('.card-inner');
+            const rect = card.getBoundingClientRect();
+
+            if (rect.left < window.innerWidth && rect.right > 0) {
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                const mouseX = e.clientX - centerX;
+                const mouseY = e.clientY - centerY;
+
+                const rotateX = (mouseY / (window.innerHeight / 2)) * -10;
+                const rotateY = (mouseX / (window.innerWidth / 2)) * 10;
+
+                inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            }
+        });
+    }
+
+    // タッチ対応
+    container.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = e.touches[0].pageX - container.offsetLeft;
+        scrollLeftAtStart = container.scrollLeft;
+        autoSpeed = 0;
+    });
+    container.addEventListener('touchend', () => {
+        isDragging = false;
+        autoSpeed = 1.0;
+    });
+    container.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const x = e.touches[0].pageX - container.offsetLeft;
+        const walk = (x - startX) * 2;
+        scrollPos = scrollLeftAtStart - walk;
+        container.scrollLeft = scrollPos;
+    });
+
 </script>
 
 {{ partial "footer.html" . }}
