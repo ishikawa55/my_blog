@@ -1,6 +1,6 @@
 baseURL = 'https://ishikawa-blog.blog/'
 languageCode = 'ja-jp'
-title = 'ishikawa'
+title = 'いしかわブログ'
 
 relativeURLs = false
 canonifyURLs = true
@@ -8,8 +8,7 @@ canonifyURLs = true
 theme = 'hugo-nes'
 
 [params]
-    title = "（仮）タイトル"
-    description = "Python、情報セキュリティ"
+    title = "いしかわブログ"
     author = "ishikawa"
 
 [[menu.main]]

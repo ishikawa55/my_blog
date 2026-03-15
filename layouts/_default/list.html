@@ -5,11 +5,13 @@
     <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px;">
         {{ range .Paginator.Pages }}
         <article>
+            <div class="archive-item" style="margin-bottom: 20px;">
             <a href="{{ .RelPermalink }}">
                 <img src="{{ .Params.image | default "/images/image-01.png" }}" style="width: 100%; aspect-ratio: 16/9; object-fit: cover;">
                 <h2 style="font-size: 24px; margin: 20px 0 10px;">{{ .Title }}</h2>
                 <p style="color: var(--text-muted); font-size: 14px;">{{ .Summary | truncate 150 }}</p>
             </a>
+            </div>
         </article>
         {{ end }}
     </div>

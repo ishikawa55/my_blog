@@ -6,6 +6,7 @@
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -17,12 +18,11 @@
             --bg-color: #ffffff;
             --text-main: #1a1a1a;
             --text-muted: #666666;
-            --border-color: #000000;
+            --border-color: #a855f7;
             --purple-accent: #6a1b9a;
         }
 
         body {
-            /* background-color: var(--bg-color); */
             background-color: transparent;
             color: var(--text-main);
             font-family: 'Noto Sans JP', sans-serif;
@@ -52,14 +52,34 @@
         /* ボタンデザイン */
         .btn-action {
             display: inline-block !important;
-            background-color: #6a1b9a !important; 
+            background-color: var(--purple-accent) !important; 
             color: #ffffff !important;
             padding: 10px 28px !important;
             border-radius: 50px !important;
             font-size: 14px !important;
             font-weight: 500 !important;
             text-decoration: none !important;
-            transition: background-color 0.3s ease;
+            /* transition: background-color 0.3s ease; */
+            transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease !important;
+        }
+
+        /* 「拡大」インタラクションの共通設定 */
+        .btn-action,
+        .read-more,
+        .post-summary,
+        .archive-item {
+            display: inline-block;
+            transition: transform 0.3s ease !important;
+            cursor: pointer;
+        }
+
+        /* ホバー時の挙動 */
+        .btn-action:hover,
+        .read-more:hover,
+        .post-summary:hover,
+        .archive-item:hover {
+            transform: scale(1.03) !important;
+            opacity: 0.9;
         }
 
         .btn-action:hover {
@@ -115,8 +135,43 @@
             display: block;
         }
 
+        .section-title {
+            /* フォント・テキスト設定 */
+            font-family: 'Noto Serif JP', serif;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--text-main);
 
+            /* レイアウト設定 */
+            display: inline-block;
+            margin-bottom: 30px;
+            padding-bottom: 8px;
+    
+            /* 境界線設定 */
+            border-bottom: 3px solid var(--border-color, #a855f7); 
 
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+
+        .section-title:hover {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .profile-img-frame {
+            border: 3px solid var(--border-color);
+            padding: 6px;
+            background-color: #ffffff;
+            display: inline-block;
+            line-height: 0;
+        }
+
+        .profile-img-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
 
         /* --- レスポンシブ設定 --- */
         @media (max-width: 768px) {
@@ -149,6 +204,10 @@
 
         .container {
             padding: 0 15px !important;
+        }
+
+        .pc-only-br {
+            display: none;
         }
         }
 

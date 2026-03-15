@@ -4,9 +4,10 @@
 	<meta name="generator" content="Hugo 0.123.7"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ishikawa</title>
+    <title>いしかわブログ</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -18,12 +19,11 @@
             --bg-color: #ffffff;
             --text-main: #1a1a1a;
             --text-muted: #666666;
-            --border-color: #000000;
+            --border-color: #a855f7;
             --purple-accent: #6a1b9a;
         }
 
         body {
-             
             background-color: transparent;
             color: var(--text-main);
             font-family: 'Noto Sans JP', sans-serif;
@@ -53,14 +53,34 @@
          
         .btn-action {
             display: inline-block !important;
-            background-color: #6a1b9a !important; 
+            background-color: var(--purple-accent) !important; 
             color: #ffffff !important;
             padding: 10px 28px !important;
             border-radius: 50px !important;
             font-size: 14px !important;
             font-weight: 500 !important;
             text-decoration: none !important;
-            transition: background-color 0.3s ease;
+             
+            transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease !important;
+        }
+
+         
+        .btn-action,
+        .read-more,
+        .post-summary,
+        .archive-item {
+            display: inline-block;
+            transition: transform 0.3s ease !important;
+            cursor: pointer;
+        }
+
+         
+        .btn-action:hover,
+        .read-more:hover,
+        .post-summary:hover,
+        .archive-item:hover {
+            transform: scale(1.03) !important;
+            opacity: 0.9;
         }
 
         .btn-action:hover {
@@ -116,8 +136,43 @@
             display: block;
         }
 
+        .section-title {
+             
+            font-family: 'Noto Serif JP', serif;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--text-main);
 
+             
+            display: inline-block;
+            margin-bottom: 30px;
+            padding-bottom: 8px;
+    
+             
+            border-bottom: 3px solid var(--border-color, #a855f7); 
 
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+
+        .section-title:hover {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .profile-img-frame {
+            border: 3px solid var(--border-color);
+            padding: 6px;
+            background-color: #ffffff;
+            display: inline-block;
+            line-height: 0;
+        }
+
+        .profile-img-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
 
          
         @media (max-width: 768px) {
@@ -151,6 +206,10 @@
         .container {
             padding: 0 15px !important;
         }
+
+        .pc-only-br {
+            display: none;
+        }
         }
 
          
@@ -166,22 +225,19 @@
     </style>
 </head>
 <body>
+
 <nav style="border-top: 4px solid #6a1b9a; border-bottom: 4px solid #6a1b9a; margin-top: 30px; margin-bottom: 30px; width: 100%; display: flow-root;">
     <div class="container nav-inner" style="display: flex; align-items: center; padding: 25px 20px;">
-        
         <div class="nav-logo" style="flex: 1; display: flex; justify-content: flex-start;">
-            <a href='http://localhost:1313/' style="font-family: 'EB Garamond', serif; font-size: 34px; font-weight: 500; letter-spacing: -0.02em; line-height: 1;">
-                My Journey
+            <a href='http://localhost:1313/' style="font-family: 'Noto Serif JP', serif; font-size: 34px; font-weight: 500; letter-spacing: -0.02em; line-height: 1; color: var(--text-main);">
+                いしかわブログ
             </a>
         </div>
-
         <div class="nav-menu" style="flex: 2; display: flex; justify-content: center; align-items: center; gap: 50px; font-size: 15px; font-weight: 500; letter-spacing: 0.1em;">
             <a href='http://localhost:1313/'>ホーム</a>
             <a href='http://localhost:1313/about'>自己紹介</a>
             <a href='http://localhost:1313/posts'>アーカイブ</a> </div>
-
         <div class="nav-spacer" style="flex: 1;"></div>
-        
     </div>
 </nav>
 
@@ -227,15 +283,13 @@
     </section>
 
     <header style="text-align: left; margin-top: 100px; margin-bottom: 40px;">
-        <h1 style="font-size: 32px; font-family: 'Noto Serif JP', serif; font-weight: 700; letter-spacing: 0.05em; border-bottom: 1px solid #000; display: inline-block; padding-bottom: 10px;">
-            新着記事
-        </h1>
+        <h2 class="section-title">新着記事</h2>
     </header>
 
     <section style="position: relative; margin-bottom: 80px;">
         
         <a href="http://localhost:1313/posts/xss/">
-            <div style="padding: 30px 0;">
+            <div class="post-summary", style="padding: 30px 0;">
                 <h2 style="font-size: 28px; margin: 10px 0;">「unsafe = true」の裏側にあるXSSの脅威</h2>
                 <p style="color: var(--text-muted);">サイトカスタマイズをしていたところ、セキュリティの壁に当たったので記録しておく。
 ドット絵のチェックボックスを表示 「ishikawaの酒場」のフロントページに、現在の活動状況を示すチェックボックスを作ろうとした時のことだ。Markdown記法でチェックボックスを作成するとビュレットが表示されてしま …</p>
@@ -271,7 +325,11 @@
         <div>
             <p style="font-size: 14px; color: var(--text-muted);">ブログについて</p>
             <h2 style="font-family: 'EB Garamond', serif; font-size: 36px; margin: 10px 0;">Author: ishikawa</h2>
-            <p>赤羽在住の情報系大学生。<br>Pythonや情報セキュリティを学び、<br>食と映像を愛する日々を送ってます。</p>
+            <p>
+                赤羽在住の情報系大学生。<br class="pc-only-br">
+                Pythonや情報セキュリティを学び、<br class="pc-only-br">
+                食と映像を愛する日々を送ってます。
+            </p>
             <a href="http://localhost:1313/about" class="btn-action">続きを読む</a>
         </div>
     </section>
@@ -282,98 +340,99 @@
     const scrollContent = document.getElementById('scroll-container');
     
     
-    const cards = Array.from(scrollContent.querySelectorAll('.gallery-card'));
-    cards.forEach(card => {
-        const clone = card.cloneNode(true);
-        scrollContent.appendChild(clone); 
-    });
+    const originalCards = Array.from(scrollContent.children);
+    
+    originalCards.forEach(card => scrollContent.appendChild(card.cloneNode(true)));
+    originalCards.forEach(card => scrollContent.appendChild(card.cloneNode(true)));
 
-    let scrollPos = 0;
-    let autoSpeed = 1.0; 
+    let currentX = 0;
+    let autoSpeed = -1.0; 
     let isDragging = false;
-    let startX, scrollLeftAtStart;
+    let startX = 0;
+    let dragStartX = 0;
+    let unitWidth = 0;
 
-    
-    function update() {
-        if (!isDragging) {
-            scrollPos += autoSpeed;
-            const maxScroll = scrollContent.scrollWidth / 2;
-            if (scrollPos >= maxScroll) {
-                scrollPos = 0;
-            }
-            container.scrollLeft = scrollPos;
-        }
-        requestAnimationFrame(update);
+    function calculateWidths() {
+        const gap = parseInt(window.getComputedStyle(scrollContent).gap) || 0;
+        unitWidth = (originalCards[0].offsetWidth + gap) * originalCards.length;
+        if (currentX === 0) currentX = -unitWidth;
     }
-    requestAnimationFrame(update);
+
+    window.addEventListener('load', calculateWidths);
+    window.addEventListener('resize', calculateWidths);
 
     
-    container.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        startX = e.pageX - container.offsetLeft;
-        scrollLeftAtStart = container.scrollLeft;
-        autoSpeed = 0;
-    });
-
-    window.addEventListener('mouseup', () => {
-        isDragging = false;
-        autoSpeed = 1.0;
-    });
-
-    window.addEventListener('mousemove', (e) => {
+    function animate() {
         if (!isDragging) {
-            handleParallax(e);
-            return;
+            currentX += autoSpeed;
+            
+            
+            if (currentX <= -unitWidth * 2) {
+                currentX += unitWidth; 
+            } else if (currentX >= 0) {
+                currentX -= unitWidth; 
+            }
         }
-        e.preventDefault();
-        const x = e.pageX - container.offsetLeft;
-        const walk = (x - startX) * 2; 
-        scrollPos = scrollLeftAtStart - walk;
-        container.scrollLeft = scrollPos;
+
+        scrollContent.style.transform = `translateX(${currentX}px)`;
+        requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+
+    
+    const dragStart = (x) => {
+        isDragging = true;
+        startX = x;
+        dragStartX = currentX;
+        autoSpeed = 0;
+        scrollContent.style.transition = 'none';
+    };
+
+    const dragMove = (x) => {
+        if (!isDragging) return;
+        const delta = x - startX;
+        currentX = dragStartX + delta;
+    };
+
+    const dragEnd = () => {
+        isDragging = false;
+        autoSpeed = -1.0;
+    };
+
+    
+    container.addEventListener('mousedown', (e) => dragStart(e.pageX));
+    window.addEventListener('mousemove', (e) => {
+        if (isDragging) dragMove(e.pageX);
+        else handleParallax(e);
     });
+    window.addEventListener('mouseup', dragEnd);
+
+    
+    container.addEventListener('touchstart', (e) => dragStart(e.touches[0].pageX));
+    container.addEventListener('touchmove', (e) => {
+        if (isDragging) {
+            dragMove(e.touches[0].pageX);
+            if (e.cancelable) e.preventDefault();
+        }
+    }, { passive: false });
+    container.addEventListener('touchend', dragEnd);
 
     
     function handleParallax(e) {
-        const allCards = document.querySelectorAll('.gallery-card');
-        allCards.forEach(card => {
-            const inner = card.querySelector('.card-inner');
-            const rect = card.getBoundingClientRect();
-
+        const inners = document.querySelectorAll('.card-inner');
+        inners.forEach(inner => {
+            const rect = inner.getBoundingClientRect();
             if (rect.left < window.innerWidth && rect.right > 0) {
                 const centerX = rect.left + rect.width / 2;
                 const centerY = rect.top + rect.height / 2;
-                const mouseX = e.clientX - centerX;
-                const mouseY = e.clientY - centerY;
+                const mouseX = (e.clientX - centerX) / 25;
+                const mouseY = (e.clientY - centerY) / 25;
 
-                const rotateX = (mouseY / (window.innerHeight / 2)) * -10;
-                const rotateY = (mouseX / (window.innerWidth / 2)) * 10;
-
-                inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                inner.style.transform = `rotateY(${mouseX}deg) rotateX(${-mouseY}deg)`;
             }
         });
     }
-
-    
-    container.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        startX = e.touches[0].pageX - container.offsetLeft;
-        scrollLeftAtStart = container.scrollLeft;
-        autoSpeed = 0;
-    });
-    container.addEventListener('touchend', () => {
-        isDragging = false;
-        autoSpeed = 1.0;
-    });
-    container.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        const x = e.touches[0].pageX - container.offsetLeft;
-        const walk = (x - startX) * 2;
-        scrollPos = scrollLeftAtStart - walk;
-        container.scrollLeft = scrollPos;
-    });
-
 </script>
-
 <div id="three-bg"></div>
 
 <script type="importmap">
