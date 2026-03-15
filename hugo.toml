@@ -1,8 +1,8 @@
-baseURL = 'https://ishikawa55.github.io/my_blog/'
+baseURL = 'https://ishikawa-blog.blog/'
 languageCode = 'ja-jp'
 title = 'ishikawa'
 
-relativeURLs = true
+relativeURLs = false
 canonifyURLs = true
 
 theme = 'hugo-nes'

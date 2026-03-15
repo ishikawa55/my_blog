@@ -1,0 +1,27 @@
+{{- /* 1. JSのビルド（最上部で定義） */ -}}
+{{- $js := "" -}}
+{{- with resources.Get "js/bg-pulse.js" -}}
+  {{- $js = . | js.Build (dict "type" "module") | minify | fingerprint -}}
+{{- end -}}
+
+<div id="three-bg"></div>
+
+{{- /* 3. JSの読み込み（$jsが存在する場合のみ） */ -}}
+{{- if $js -}}
+  <script src="{{ $js.Permalink }}" type="module" defer></script>
+{{- else -}}
+  <script>console.error("Hugo: assets/js/bg-pulse.js が見つかりません。");</script>
+{{- end -}}
+
+<footer style="margin-top: 100px; padding-bottom: 60px; text-align: center; position: relative; z-index: 10;">
+    <hr style="border: none; border-top: 1px solid #eee; margin-bottom: 40px;">
+    <p style="font-family: 'EB Garamond', serif; font-size: 18px; letter-spacing: 0.05em; margin-bottom: 10px;">
+        My Journey
+    </p>
+    <p style="font-size: 12px; color: var(--text-muted); letter-spacing: 0.1em;">
+        &copy; {{ now.Format "2006" }} ishikawa. All Rights Reserved.
+    </p>
+</footer>
+
+</body>
+</html>

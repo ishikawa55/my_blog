@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-	<meta name="generator" content="Hugo 0.123.7"><script src="/my_blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=my_blog/livereload" data-no-instant defer></script>
+	<meta name="generator" content="Hugo 0.123.7"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ishikawa</title>
@@ -138,20 +138,31 @@
             padding: 0 15px !important;
         }
     }
+
+     
+    #three-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-color: #ffffff;
+    }
     </style>
 </head>
 <body>
 <nav style="border-top: 1px solid #000; border-bottom: 1px solid #000; margin-top: 20px;">
     <div class="container nav-inner" style="display: flex; align-items: center; padding: 10px 0;">
         <div class="nav-logo" style="flex: 1; display: flex; justify-content: flex-start;">
-            <a href='./' style="font-family: 'EB Garamond', serif; font-size: 30px; font-weight: 700; letter-spacing: 0.02em;">
+            <a href='http://localhost:1313/' style="font-family: 'EB Garamond', serif; font-size: 30px; font-weight: 700; letter-spacing: 0.02em;">
                 My Journey
             </a>
         </div>
         <div class="nav-menu" style="flex: 2; display: flex; justify-content: center; gap: 60px; font-size: 14px; font-weight: 500; letter-spacing: 0.1em;">
-            <a href='./'>ホーム</a>
-            <a href='./about'>自己紹介</a>
-            <a href='./posts'>アーカイブ</a>
+            <a href='http://localhost:1313/'>ホーム</a>
+            <a href='http://localhost:1313/about'>自己紹介</a>
+            <a href='http://localhost:1313/posts'>アーカイブ</a>
         </div>
         <div class="nav-spacer" style="flex: 1;"></div>
     </div>
@@ -162,16 +173,16 @@
     <section class="hero-slideshow">
     <div class="slideshow-container">
         <div class="mySlides fade">
-            <img src="./images/mate1.png" alt="思考の断片1">
+            <img src="http://localhost:1313/images/mate1.png" alt="思考の断片1">
         </div>
         <div class="mySlides fade">
-            <img src="./images/mate2.png" alt="思考の断片2">
+            <img src="http://localhost:1313/images/mate2.png" alt="思考の断片2">
         </div>
         <div class="mySlides fade">
-            <img src="./images/mate3.png" alt="思考の断片3">
+            <img src="http://localhost:1313/images/mate3.png" alt="思考の断片3">
         </div>
         <div class="mySlides fade">
-            <img src="./images/mate4.png" alt="思考の断片4">
+            <img src="http://localhost:1313/images/mate4.png" alt="思考の断片4">
         </div>
     </div>
     </section>
@@ -184,7 +195,7 @@
 
     <section style="position: relative; margin-bottom: 80px;">
         
-        <a href="./posts/xss/">
+        <a href="http://localhost:1313/posts/xss/">
             <div style="padding: 30px 0;">
                 <h2 style="font-size: 28px; margin: 10px 0;">「unsafe = true」の裏側にあるXSSの脅威</h2>
                 <p style="color: var(--text-muted);">サイトカスタマイズをしていたところ、セキュリティの壁に当たったので記録しておく。
@@ -217,12 +228,12 @@
     <hr>
 
     <section style="display: flex; gap: 40px; align-items: center; padding: 40px 0;">
-        <img src="./images/slide1.png" style="width: 40%; aspect-ratio: 37/32; object-fit: cover; border: 1px solid #000;">
+        <img src="http://localhost:1313/images/slide1.png" style="width: 40%; aspect-ratio: 37/32; object-fit: cover; border: 1px solid #000;">
         <div>
             <p style="font-size: 14px; color: var(--text-muted);">ブログについて</p>
             <h2 style="font-family: 'EB Garamond', serif; font-size: 36px; margin: 10px 0;">Author: ishikawa</h2>
             <p>赤羽在住の情報系大学生。Pythonや情報セキュリティを学び、食と映像を愛する日々を送ってます。</p>
-            <a href="./about" class="btn-action">続きを読む</a>
+            <a href="http://localhost:1313/about" class="btn-action">続きを読む</a>
         </div>
     </section>
 </main>
@@ -248,7 +259,15 @@
     }
 </script>
 
-</section>
+<div id="three-bg"></div><script src="http://localhost:1313/js/bg-pulse.min.36b21a6227e1fc6b33eccae858b08f7535176d1d16255cf4926a26c95739533e.js" type="module" defer></script><footer style="margin-top: 100px; padding-bottom: 60px; text-align: center; position: relative; z-index: 10;">
+    <hr style="border: none; border-top: 1px solid #eee; margin-bottom: 40px;">
+    <p style="font-family: 'EB Garamond', serif; font-size: 18px; letter-spacing: 0.05em; margin-bottom: 10px;">
+        My Journey
+    </p>
+    <p style="font-size: 12px; color: var(--text-muted); letter-spacing: 0.1em;">
+        &copy; 2026 ishikawa. All Rights Reserved.
+    </p>
+</footer>
+
 </body>
 </html>
-
