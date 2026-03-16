@@ -6,21 +6,28 @@
     <description>Recent content on いしかわブログ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 01 Mar 2026 22:34:24 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 10 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>美言と真言</title>
+      <link>http://localhost:1313/posts/idea1/</link>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/idea1/</guid>
+      <description>「優しい嘘」という言葉がある。</description>
+    </item>
     <item>
       <title>About Me</title>
       <link>http://localhost:1313/about/</link>
       <pubDate>Sun, 01 Mar 2026 22:34:24 +0900</pubDate>
       <guid>http://localhost:1313/about/</guid>
-      <description>ブログ開設！ こんにちは ishikawa です。赤羽在住の大学生で普段は情報系の勉強をしています。完璧主義で、文章を書くときに見栄えを気にすると全く書き進めることが出来ないので、とりあえず書いてみるというマインドで書き進めていきます。本が好きで特にSFと恋愛（愛について）を読むのですが、単純に面白いから読むという側面と、自分の中にある言語化できなかった感情を言語化してくれる作家さんに遇うという側面があります。恋愛は後者の色が強く、特に大学生になってから出会いの場（図書館）に行くことが多くなりました。一目惚れはしないタイプですが、、、個人的に素敵だなと思った方を紹介しておきます。いいね数が多いほどスワイプ数が多くなるのは本もマチアプも同じなのかもしれませんね。&#xA;最果タヒ 第1回 愛は全部キモい ──『ロミオとジュリエット』 技術、音楽、本、映像などについて自分の好きなモノを適当に書いていこうと思うので、雑多なブログになると思いますが付き合って頂けると幸いです。</description>
+      <description> ブログ開設！ こんにちは ishikawa です。赤羽在住の大学生で普段は情報系の勉強をしています。完璧主義で、文章を書くときに見栄えを気にすると全く書き進めることが出来ないので、とりあえず書いてみるというマインドで書き進めていきます。本が好きで特にSFと恋愛を読むのですが、単純に面白いから読むという側面と、言語化できなかった感情を言語化してくれる作家さんに遇うという側面があります。恋愛は後者の色が強く、特に大学生になってから出会いの場（図書館）に行くことが多くなりました。一目惚れはしないタイプですが、、、個人的に素敵だなと思った方を紹介しておきます。最果タヒさんです。ぜひ下のリンクから読んでみて下さい。いいね数が多いほどスワイプ数が多くなるのは本もマチアプも同じなのかもしれませんね。&#xA;最果タヒ 第1回 愛は全部キモい ──『ロミオとジュリエット』 自分の好きなモノを適当に書いていこうと思うので、雑多なブログになると思いますが付き合って頂けると幸いです。&#xA;最近のタスク 十分な睡眠と適切な飲酒 基本情報技術者試験 情報セキュリティの学習 読書 </description>
     </item>
     <item>
       <title>「unsafe = true」の裏側にあるXSSの脅威</title>
       <link>http://localhost:1313/posts/xss/</link>
-      <pubDate>Sun, 01 Mar 2026 02:05:30 +0900</pubDate>
+      <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/xss/</guid>
-      <description>サイトカスタマイズをしていたところ、セキュリティの壁に当たったので記録しておく。&#xA;ドット絵のチェックボックスを表示 「ishikawaの酒場」のフロントページに、現在の活動状況を示すチェックボックスを作ろうとした時のことだ。Markdown記法でチェックボックスを作成するとビュレットが表示されてしまい、デザインに欠ける。（以下参照）&#xA;十分な睡眠と適切な飲酒 Pythonの学習（Djangoも含む） 情報セキュリティの学習 そこで、HTMLを直接埋め込むことでドットのチェックボックスにブラッシュアップできた。（以下参照）&#xA;十分な睡眠と適切な飲酒 Pythonの学習（Djangoも含む） 情報セキュリティの学習 Markdown で HTML を作動させる NES.cssのレトロなチェックボックスを使おうとMarkdownに直接HTMLを書き込んでも、ビルドしてみると反映されない。原因は、Hugoの標準Markdownレンダラーである「Goldmark」の安全装置が働いていたからだ。HTMLの使用を許可するには、hugo.tomlに以下の設定を追記する。&#xA;[markup.goldmark.renderer] unsafe = true なぜ Hugo は HTML を無視するのか？ Hugoはパーサーとして「Goldmark」を採用している。「Goldmark」はMarkdownレンダラーの一種で、標準設定でMarkdown内のHTMLは安全ではないとして除去されるようになっている。これにはXSSという非常に重要な脆弱性を防ぐ意図がある。&#xA;XSS（クロスサイトスクリプティング）とは何か XSSとは、サイトの脆弱性を突いて攻撃者が悪意のあるスクリプトを埋め込み、それを閲覧したユーザーのブラウザで実行させるサイバー攻撃のことだ。もし、不特定多数が記事を投稿できるサイトで HTMLを無効化（サニタイズ） していなかったらどうなるか？悪意のある者が、以下のようなコードを紛れ込ませるかもしれない。&#xA;&amp;lt;img src=&amp;#34;invalid&amp;#34; onerror=&amp;#34;alert(&amp;#39;セッション情報を盗みました: &amp;#39; + document.cookie);&amp;#34;&amp;gt; このスクリプトは、、、&#xA;src=&amp;quot;invalid&amp;quot;（存在しない画像パス）を指定することで、わざと読み込みエラーを発生させる。 エラーが起きる、onerror属性に書かれたJavaScriptが作動する。 この例ではalertが出るだけだか、実際はdocument.cookie（セッション情報など）を攻撃者のサーバーへ送信させるようなコードが書かれることが多い。 総括 今回のケースでは 「自分で自分のサイトにHTMLを書く」 ためリスクは低い。不特定多数がコメントを残せるようなサイトであれば、この 「HTMLの無効化」 は絶対に欠かせない防衛ラインとなる。利便性と安全性のトレードオフをどう管理するか、難しい課題だと感じた。</description>
+      <description>サイトカスタマイズをしていたところ、セキュリティの壁に当たったので記録しておく。&#xA;チェックボックスを表示 自己紹介ページに「最近のタスク」を示すチェックボックスを作ろうとした時のことだ。Markdown記法でチェックボックスを作成するとビュレットが表示されてしまい、デザインに欠ける。（以下参照）&#xA;十分な睡眠と適切な飲酒 読書 そこで、HTMLを直接埋め込むことで改善を試みた。（以下参照）&#xA;十分な睡眠と適切な飲酒 読書 Markdown で HTML を作動させる HugoのMarkdownレンダラーである「Goldmark」の安全装置が働いていて、直接HTMLを書き込んでも反映されない。HTMLの使用を許可するには、hugo.toml に以下の設定を追記する。&#xA;[markup.goldmark.renderer] unsafe = true なぜ Hugo は HTML を無視するのか？ Hugoはパーサーとして「Goldmark」を採用している。「Goldmark」はMarkdownレンダラーの一種で、標準設定でMarkdown内のHTMLは安全ではないとして除去されるようになっている。これにはXSSという非常に重要な脆弱性を防ぐ意図がある。&#xA;XSS（クロスサイトスクリプティング）とは何か XSSとは、サイトの脆弱性を突いて攻撃者が埋め込んだ悪意あるスクリプトを、閲覧者のブラウザ上で実行させるサイバー攻撃のことだ。もし、不特定多数が記事を投稿できるサイトで HTMLを無効化（サニタイズ） していなかったらどうなるか？悪意のある者が、以下のようなコードを紛れ込ませるかもしれない。&#xA;&amp;lt;img src=&amp;#34;invalid&amp;#34; onerror=&amp;#34;alert(`セッション情報を盗みました: ` + document.cookie);&amp;#34;&amp;gt; このスクリプトは、、、&#xA;src=&amp;quot;invalid&amp;quot;（存在しない画像パス）を指定することで、わざと読み込みエラーを発生させる。 エラーが起きる、onerror 属性に書かれたJavaScriptが作動する。 この例では alert が出るだけだか、実際は document.cookie（セッション情報など）を攻撃者のサーバーへ送信させるようなコードが書かれることが多い。 総括 今回のケースでは 「自分で自分のサイトにHTMLを書く」 ためリスクはほぼない。これはMarkdown内に直接 &amp;lt;script src=&amp;quot;https://example.com/widget.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; のような外部JSを書いた場合に、その提供元がハッキングされると結果的に悪意のあるコードが実行されてしまうということであり、実質的なリスクはほぼないという意味である。&#xA;不特定多数がコメントを残せるようなサイトであれば、この 「HTMLの無効化」 は絶対に欠かせない防衛ラインとなる。利便性と安全性のトレードオフをどう管理するか、難しい課題だと感じた。</description>
     </item>
   </channel>
 </rss>

@@ -126,12 +126,17 @@
             border: 2px solid var(--purple-accent);
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             pointer-events: none;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
 
         .card-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
         }
 
@@ -171,6 +176,40 @@
             display: block;
             width: 100%;
             height: auto;
+        }
+
+         
+        :not(pre) > code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f3e5f5;
+            color: #6a1b9a;
+            padding: 0.02em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
+            border: 1px solid #e1bee7;
+            margin: 0 2px;
+            display: inline-block;
+        }
+
+        pre {
+            background-color: #1e1e1e;
+            color: #dcdcdc;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 5px solid var(--border-color, #a855f7);
+            margin: 25px 0;
+            line-height: 1.5;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        pre code {
+            background-color: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            color: inherit;
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', monospace;
+            font-size: 14px;
         }
 
          
@@ -246,11 +285,19 @@
         
         <article>
             <div class="archive-item" style="margin-bottom: 20px;">
+            <a href="http://localhost:1313/posts/idea1/">
+                <h2 style="font-size: 24px; margin: 20px 0 10px;">美言と真言</h2>
+                <p style="color: var(--text-muted); font-size: 14px;">「優しい嘘」という言葉がある。</p>
+            </a>
+            </div>
+        </article>
+        
+        <article>
+            <div class="archive-item" style="margin-bottom: 20px;">
             <a href="http://localhost:1313/posts/xss/">
-                <img src="http://localhost:1313/images/image-01.png" style="width: 100%; aspect-ratio: 16/9; object-fit: cover;">
                 <h2 style="font-size: 24px; margin: 20px 0 10px;">「unsafe = true」の裏側にあるXSSの脅威</h2>
                 <p style="color: var(--text-muted); font-size: 14px;">サイトカスタマイズをしていたところ、セキュリティの壁に当たったので記録しておく。
-ドット絵のチェックボックスを表示 「ishikawaの酒場」のフロントページに、現在の活動状況を示すチェックボックスを作ろうとした時のことだ。Markdown記法でチェックボックスを作成するとビュレットが表示されてしま …</p>
+チェックボックスを表示 自己紹介ページに「最近のタスク」を示すチェックボックスを作ろうとした時のことだ。Markdown記法でチェックボックスを作成するとビュレットが表示されてしまい、デ …</p>
             </a>
             </div>
         </article>
@@ -338,9 +385,9 @@ init();
 </script>
 
 <footer style="margin-top: 100px; padding-bottom: 60px; text-align: center; position: relative; z-index: 10;">
-    <hr style="border: none; border-top: 1px solid #eee; margin-bottom: 40px;">
+    <hr style="border: none; border-top: 1px solid #a855f7; margin-bottom: 40px;">
     <p style="font-family: 'EB Garamond', serif; font-size: 18px; letter-spacing: 0.05em; margin-bottom: 10px;">
-        My Journey
+        いしかわブログ
     </p>
     <p style="font-size: 12px; color: var(--text-muted); letter-spacing: 0.1em;">
         &copy; 2026 ishikawa. All Rights Reserved.

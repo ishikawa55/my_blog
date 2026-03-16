@@ -8,7 +8,7 @@ draft = false
 
 # ブログ開設！
 
-こんにちは **ishikawa** です。赤羽在住の大学生で普段は情報系の勉強をしています。完璧主義で、文章を書くときに見栄えを気にすると全く書き進めることが出来ないので、**とりあえず書いてみる**というマインドで書き進めていきます。本が好きで特にSFと恋愛（愛について）を読むのですが、**単純に面白いから読む**という側面と、自分の中にある言語化できなかった感情を**言語化してくれる作家さんに遇う**という側面があります。恋愛は後者の色が強く、特に大学生になってから**出会いの場**（図書館）に行くことが多くなりました。一目惚れはしないタイプですが、、、個人的に素敵だなと思った方を紹介しておきます。~~いいね数が多いほどスワイプ数が多くなるのは本もマチアプも同じなのかもしれませんね。~~
+こんにちは **ishikawa** です。赤羽在住の大学生で普段は情報系の勉強をしています。完璧主義で、文章を書くときに見栄えを気にすると全く書き進めることが出来ないので、**とりあえず書いてみる**というマインドで書き進めていきます。本が好きで特にSFと恋愛を読むのですが、**単純に面白いから読む**という側面と、言語化できなかった感情を**言語化してくれる作家さんに遇う**という側面があります。恋愛は後者の色が強く、特に大学生になってから**出会いの場**（図書館）に行くことが多くなりました。一目惚れはしないタイプですが、、、個人的に素敵だなと思った方を紹介しておきます。最果タヒさんです。ぜひ下のリンクから読んでみて下さい。~~いいね数が多いほどスワイプ数が多くなるのは本もマチアプも同じなのかもしれませんね。~~
 
 <div style="position: relative; display: inline-block; width: 100%;">
   <a href="https://tanemaki.iwanami.co.jp/posts/5946">
@@ -20,4 +20,27 @@ draft = false
   </div>
 </div>
 
-技術、音楽、本、映像などについて自分の好きなモノを適当に書いていこうと思うので、雑多なブログになると思いますが付き合って頂けると幸いです。
+自分の好きなモノを適当に書いていこうと思うので、雑多なブログになると思いますが付き合って頂けると幸いです。
+
+## 最近のタスク
+
+<!-- <div style="text-align: center; margin: 1.5rem 0;"> -->
+  <div style="display: inline-block; text-align: left;">
+    <label style="display: block; margin-bottom: 0.5rem;">
+      <input type="checkbox" class="nes-checkbox" checked disabled />
+      <span>十分な<b>睡眠</b>と適切な<b>飲酒</b></span>
+    </label>
+    <label style="display: block;">
+      <input type="checkbox" class="nes-checkbox" disabled />
+      <span>基本情報技術者試験</span>
+    </label>
+    <label style="display: block;">
+      <input type="checkbox" class="nes-checkbox" disabled />
+      <span>情報セキュリティの学習</span>
+    </label>
+    <label style="display: block;">
+      <input type="checkbox" class="nes-checkbox" disabled />
+      <span>読書</span>
+    </label>
+  </div>
+<!-- </div> -->
