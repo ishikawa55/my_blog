@@ -113,7 +113,9 @@
 
         .gallery-card {
             flex: 0 0 600px;
-            height: 350px;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
             perspective: 1000px;
         }
 
@@ -213,11 +215,11 @@
         }
 
         .summary-desktop {
-            display: block;
+            display: block !important;
         }
 
         .summary-mobile {
-            display: none;
+            display: none !important;
         }
 
         /* --- レスポンシブ設定 --- */
@@ -258,11 +260,16 @@
         }
 
         .summary-desktop {
-            display: none;
+            display: none !important;
         }
     
         .summary-mobile {
-            display: block;
+            display: block !important;
+            margin-top: 10px;
+        }
+
+        .gallery-card {
+            flex: 0 0 85vw;
         }
         }
 

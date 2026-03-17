@@ -114,7 +114,9 @@
 
         .gallery-card {
             flex: 0 0 600px;
-            height: 350px;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
             perspective: 1000px;
         }
 
@@ -214,11 +216,11 @@
         }
 
         .summary-desktop {
-            display: block;
+            display: block !important;
         }
 
         .summary-mobile {
-            display: none;
+            display: none !important;
         }
 
          
@@ -259,11 +261,16 @@
         }
 
         .summary-desktop {
-            display: none;
+            display: none !important;
         }
     
         .summary-mobile {
-            display: block;
+            display: block !important;
+            margin-top: 10px;
+        }
+
+        .gallery-card {
+            flex: 0 0 85vw;
         }
         }
 
@@ -282,7 +289,7 @@
 <body>
 
 <nav style="border-top: 4px solid #6a1b9a; border-bottom: 4px solid #6a1b9a; margin-top: 30px; margin-bottom: 30px; width: 100%; display: flow-root;">
-    <div class="container nav-inner" style="display: flex; align-items: center; padding: 25px 20px;">
+    <div class="container nav-inner" style="display: flex; align-items: center; padding: 50px 20px 25px 20px;">
         <div class="nav-logo" style="flex: 1; display: flex; justify-content: flex-start;">
             <a href='http://localhost:1313/' style="font-family: 'Noto Serif JP', serif; font-size: 34px; font-weight: 500; letter-spacing: -0.02em; line-height: 1; color: var(--text-main);">
                 いしかわブログ

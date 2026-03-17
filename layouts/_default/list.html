@@ -9,10 +9,10 @@
             <a href="{{ .RelPermalink }}">
                 <h2 style="font-size: 24px; margin: 20px 0 10px;">{{ .Title }}</h2>
                 <p class="summary-desktop" style="color: var(--text-muted); font-size: 14px;">
-                    {{ .Summary | truncate 134 }}
+                    {{ .Summary | plainify | truncate 134 }}
                 </p>
                 <p class="summary-mobile" style="color: var(--text-muted); font-size: 14px;">
-                    {{ .Summary | truncate 20 }}
+                    {{ .Summary | plainify | truncate 20 }}
                 </p>
             </a>
             </div>
