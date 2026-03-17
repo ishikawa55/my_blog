@@ -179,6 +179,40 @@
         }
 
          
+        :not(pre) > code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f3e5f5;
+            color: #6a1b9a;
+            padding: 0.02em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
+            border: 1px solid #e1bee7;
+            margin: 0 2px;
+            display: inline-block;
+        }
+
+        pre {
+            background-color: #1e1e1e;
+            color: #dcdcdc;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 5px solid var(--border-color, #a855f7);
+            margin: 25px 0;
+            line-height: 1.5;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        pre code {
+            background-color: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            color: inherit;
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', monospace;
+            font-size: 14px;
+        }
+
+         
         @media (max-width: 768px) {
         .nav-inner {
             flex-direction: column !important;
@@ -248,6 +282,15 @@
 <div class="container" style="padding: 60px 0;">
     <h1 style="font-size: 48px; text-align: center; margin-bottom: 60px;">アーカイブ</h1>
     <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px;">
+        
+        <article>
+            <div class="archive-item" style="margin-bottom: 20px;">
+            <a href="http://localhost:1313/categories/%E6%96%87%E8%8A%B8/">
+                <h2 style="font-size: 24px; margin: 20px 0 10px;">文芸</h2>
+                <p style="color: var(--text-muted); font-size: 14px;"></p>
+            </a>
+            </div>
+        </article>
         
         <article>
             <div class="archive-item" style="margin-bottom: 20px;">
@@ -341,7 +384,7 @@ init();
 </script>
 
 <footer style="margin-top: 100px; padding-bottom: 60px; text-align: center; position: relative; z-index: 10;">
-    <hr style="border: none; border-top: 1px solid #eee; margin-bottom: 40px;">
+    <hr style="border: none; border-top: 1px solid #a855f7; margin-bottom: 40px;">
     <p style="font-family: 'EB Garamond', serif; font-size: 18px; letter-spacing: 0.05em; margin-bottom: 10px;">
         いしかわブログ
     </p>

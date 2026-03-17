@@ -212,6 +212,14 @@
             font-size: 14px;
         }
 
+        .summary-desktop {
+            display: block;
+        }
+
+        .summary-mobile {
+            display: none;
+        }
+
          
         @media (max-width: 768px) {
         .nav-inner {
@@ -247,6 +255,14 @@
 
         .pc-only-br {
             display: none;
+        }
+
+        .summary-desktop {
+            display: none;
+        }
+    
+        .summary-mobile {
+            display: block;
         }
         }
 
@@ -287,7 +303,12 @@
             <div class="archive-item" style="margin-bottom: 20px;">
             <a href="http://localhost:1313/posts/idea1/">
                 <h2 style="font-size: 24px; margin: 20px 0 10px;">美言と真言</h2>
-                <p style="color: var(--text-muted); font-size: 14px;">「優しい嘘」という言葉がある。</p>
+                <p class="summary-desktop" style="color: var(--text-muted); font-size: 14px;">
+                    「優しい嘘」という言葉がある。
+                </p>
+                <p class="summary-mobile" style="color: var(--text-muted); font-size: 14px;">
+                    「優しい嘘」という言葉がある。
+                </p>
             </a>
             </div>
         </article>
@@ -296,8 +317,13 @@
             <div class="archive-item" style="margin-bottom: 20px;">
             <a href="http://localhost:1313/posts/xss/">
                 <h2 style="font-size: 24px; margin: 20px 0 10px;">「unsafe = true」の裏側にあるXSSの脅威</h2>
-                <p style="color: var(--text-muted); font-size: 14px;">サイトカスタマイズをしていたところ、セキュリティの壁に当たったので記録しておく。
-チェックボックスを表示 自己紹介ページに「最近のタスク」を示すチェックボックスを作ろうとした時のことだ。Markdown記法でチェックボックスを作成するとビュレットが表示されてしまい、デ …</p>
+                <p class="summary-desktop" style="color: var(--text-muted); font-size: 14px;">
+                    サイトカスタマイズをしていたところ、セキュリティの壁に当たったので記録しておく。
+チェックボックスを表示 自己紹介ページに「最近のタスク」を示すチェックボックスを作ろうとした時のことだ。Markdown記法でチェックボックスを作成するとビュレットが表示されてしまい、デ …
+                </p>
+                <p class="summary-mobile" style="color: var(--text-muted); font-size: 14px;">
+                    サイトカスタマイズをしていたところ、セキ …
+                </p>
             </a>
             </div>
         </article>
