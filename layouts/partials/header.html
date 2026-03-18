@@ -222,12 +222,23 @@
             display: none !important;
         }
 
+        .nav-logo a {
+            white-space: nowrap !important;
+            font-size: 28px !important;
+        }
+
         /* --- レスポンシブ設定 --- */
-        @media (max-width: 768px) {
+        @media screen and (min-width: 801px) {
+        .nav-logo {
+            padding-left: 40px;
+        }
+        }
+
+        @media screen and (max-width: 800px) {
         .nav-inner {
             flex-direction: column !important;
-            gap: 15px !important;
-            padding: 20px 0 !important;
+            gap: 20px !important;
+            padding: 40px 20px !important;
         }
 
         .nav-logo, .nav-menu, .nav-spacer {
@@ -237,13 +248,14 @@
             justify-content: center !important;
         }
 
-        .nav-menu {
-            gap: 20px !important;
-            font-size: 13px !important;
+        .nav-logo a {
+            padding-top: 20px !important;
         }
 
-        .nav-logo a {
-            font-size: 28px !important;
+        .nav-menu {
+            display: flex !important;
+            gap: 20px !important;
+            font-size: 13px !important;
         }
 
         .btn-action {
