@@ -228,7 +228,13 @@
         }
 
          
-        @media (max-width: 800px) {
+        @media screen and (min-width: 801px) {
+        .nav-logo {
+            padding-left: 40px;
+        }
+        }
+
+        @media screen and (max-width: 800px) {
         .nav-inner {
             flex-direction: column !important;
             gap: 20px !important;
@@ -243,8 +249,7 @@
         }
 
         .nav-logo a {
-            padding-top: 6px !important;
-            padding-bottom: 6px !important;
+            padding-top: 20px !important;
         }
 
         .nav-menu {

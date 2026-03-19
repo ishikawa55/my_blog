@@ -3,7 +3,7 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>「unsafe = true」の裏側にあるXSSの脅威 | いしかわブログ</title>
+    <title>XSSの脅威 | いしかわブログ</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
@@ -228,7 +228,13 @@
         }
 
          
-        @media (max-width: 800px) {
+        @media screen and (min-width: 801px) {
+        .nav-logo {
+            padding-left: 40px;
+        }
+        }
+
+        @media screen and (max-width: 800px) {
         .nav-inner {
             flex-direction: column !important;
             gap: 20px !important;
@@ -243,8 +249,7 @@
         }
 
         .nav-logo a {
-            padding-top: 6px !important;
-            padding-bottom: 6px !important;
+            padding-top: 20px !important;
         }
 
         .nav-menu {
@@ -301,10 +306,11 @@
                 いしかわブログ
             </a>
         </div>
-        <div class="nav-menu" style="flex: 1; display: flex; justify-content: center; align-items: center; gap: 50px; font-size: 15px; font-weight: 500; letter-spacing: 0.1em;">
-            <a href='http://localhost:1313/'>ホーム</a>
-            <a href='http://localhost:1313/about'>自己紹介</a>
-            <a href='http://localhost:1313/posts'>アーカイブ</a> </div>
+        <div class="nav-menu" style="flex: 2; display: flex; justify-content: center; align-items: center; gap: 50px; font-size: 15px; font-weight: 500; letter-spacing: 0.1em;">
+            <a href='http://localhost:1313/' style="white-space: nowrap;">ホーム</a>
+            <a href='http://localhost:1313/about' style="white-space: nowrap;">自己紹介</a>
+            <a href='http://localhost:1313/posts' style="white-space: nowrap;">アーカイブ</a>
+        </div>
         <div class="nav-spacer" style="flex: 1;"></div>
     </div>
 </nav>
@@ -312,17 +318,17 @@
 <article class="container" style="padding: 80px 0; max-width: 700px;">
     <header style="text-align: center; margin-bottom: 60px;">
         <p style="color: var(--text-muted); font-size: 14px;">2026年3月1日</p>
-        <h1 style="font-family: 'EB Garamond', serif; font-size: 42px; line-height: 1.3;">「unsafe = true」の裏側にあるXSSの脅威</h1>
+        <h1 style="font-family: 'EB Garamond', serif; font-size: 42px; line-height: 1.3;">XSSの脅威</h1>
     </header>
     <div style="font-size: 17px; line-height: 2; color: #333;">
         <p>サイトカスタマイズをしていたところ、セキュリティの壁に当たったので記録しておく。</p>
 <h2 id="チェックボックスを表示">チェックボックスを表示</h2>
-<p>自己紹介ページに「最近のタスク」を示すチェックボックスを作ろうとした時のことだ。Markdown記法でチェックボックスを作成するとビュレットが表示されてしまい、デザインに欠ける。（以下参照）</p>
+<p>自己紹介ページに「最近のタスク」を示すチェックボックスを作ろうとした時のことだ。Markdown記法でチェックボックスを作成するとビュレットが表示されてしまい、デザインに欠ける。</p>
 <ul>
 <li><input checked="" disabled="" type="checkbox"> 十分な<strong>睡眠</strong>と適切な<strong>飲酒</strong></li>
 <li><input disabled="" type="checkbox"> 読書</li>
 </ul>
-<p>そこで、HTMLを直接埋め込むことで改善を試みた。（以下参照）</p>
+<p>そこで、HTMLを直接埋め込むことで改善を試みた。</p>
 <!-- <div style="text-align: center; margin: 1.5rem 0;"> -->
   <div style="display: inline-block; text-align: left;">
     <label style="display: block; margin-bottom: 0.5rem;">
@@ -351,8 +357,9 @@
 <li>この例では <code>alert</code> が出るだけだか、実際は <code>document.cookie</code>（セッション情報など）を攻撃者のサーバーへ送信させるようなコードが書かれることが多い。</li>
 </ol>
 <h2 id="総括">総括</h2>
-<p>今回のケースでは <strong>「自分で自分のサイトにHTMLを書く」</strong> ためリスクはほぼない。これはMarkdown内に直接 <code>&lt;script src=&quot;https://example.com/widget.js&quot;&gt;&lt;/script&gt;</code> のような外部JSを書いた場合に、その提供元がハッキングされると結果的に悪意のあるコードが実行されてしまうということであり、<strong>実質的なリスクはほぼない</strong>という意味である。</p>
-<p>不特定多数がコメントを残せるようなサイトであれば、この <strong>「HTMLの無効化」</strong> は絶対に欠かせない防衛ラインとなる。利便性と安全性のトレードオフをどう管理するか、難しい課題だと感じた。</p>
+<p>今回のケースでは <strong>「自分で自分のサイトにHTMLを書く」</strong> ためリスクはほぼない。これはMarkdown内に直接以下のような外部JSを書いた場合に、その提供元がハッキングされると結果的に悪意のあるコードが実行されてしまうということであり、<strong>実質的なリスクはほぼない</strong>という意味である。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://example.com/widget.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>不特定多数がコメントを残せるようなサイトであれば、この <strong>「HTMLの無効化」</strong> は絶対に欠かせない防衛ラインとなる。利便性と安全性のトレードオフをどう管理するか、難しい課題だと感じた。</p>
 
     </div>
     <div style="margin-top: 60px; border-top: 1px solid #a855f7; padding-top: 20px;">

@@ -228,7 +228,13 @@
         }
 
          
-        @media (max-width: 800px) {
+        @media screen and (min-width: 801px) {
+        .nav-logo {
+            padding-left: 40px;
+        }
+        }
+
+        @media screen and (max-width: 800px) {
         .nav-inner {
             flex-direction: column !important;
             gap: 20px !important;
@@ -243,8 +249,7 @@
         }
 
         .nav-logo a {
-            padding-top: 6px !important;
-            padding-bottom: 6px !important;
+            padding-top: 20px !important;
         }
 
         .nav-menu {
@@ -301,10 +306,11 @@
                 いしかわブログ
             </a>
         </div>
-        <div class="nav-menu" style="flex: 1; display: flex; justify-content: center; align-items: center; gap: 50px; font-size: 15px; font-weight: 500; letter-spacing: 0.1em;">
-            <a href='http://localhost:1313/'>ホーム</a>
-            <a href='http://localhost:1313/about'>自己紹介</a>
-            <a href='http://localhost:1313/posts'>アーカイブ</a> </div>
+        <div class="nav-menu" style="flex: 2; display: flex; justify-content: center; align-items: center; gap: 50px; font-size: 15px; font-weight: 500; letter-spacing: 0.1em;">
+            <a href='http://localhost:1313/' style="white-space: nowrap;">ホーム</a>
+            <a href='http://localhost:1313/about' style="white-space: nowrap;">自己紹介</a>
+            <a href='http://localhost:1313/posts' style="white-space: nowrap;">アーカイブ</a>
+        </div>
         <div class="nav-spacer" style="flex: 1;"></div>
     </div>
 </nav>
