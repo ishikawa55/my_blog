@@ -143,27 +143,28 @@
         }
 
         .section-title {
-             
-            font-family: 'Noto Serif JP', serif;
-            font-size: 32px;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            color: var(--text-main);
-
-             
             display: inline-block;
-            margin-bottom: 30px;
-            padding-bottom: 8px;
-    
-             
-            border-bottom: 3px solid var(--border-color, #a855f7); 
-
-            transition: transform 0.3s ease;
-            cursor: default;
+            position: relative;
+            padding: 0.5em 1.5em 0.5em 1em;  
+            background-color: #f5f5f5;
+            color: #333333;
+            border-right: 27px solid #8c25d0;
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 700;
+            text-shadow: none !important;
         }
 
-        .section-title:hover {
-            transform: translateY(-2px) scale(1.02);
+        .section-title::before {
+             
+            position: absolute;
+            z-index: -1;       
+            bottom: 102px;      
+            left: 400px;        
+            width: 90%;        
+            height: 15px;
+            background: transparent;
+            box-shadow: 0 15px 15px rgba(0, 0, 0, 0.2); 
+            transform: rotate(-2deg);
         }
 
         .profile-img-frame {
