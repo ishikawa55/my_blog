@@ -20,6 +20,8 @@
             --text-muted: #666666;
             --border-color: #a855f7;
             --purple-accent: #6a1b9a;
+            --archive-title-margin-pc: 80px;
+            --archive-title-margin-sp: 40px;
         }
 
         body {
@@ -232,6 +234,19 @@
             font-size: 28px !important;
         }
 
+        .archive-title {
+            font-size: 48px;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: var(--archive-title-margin-pc); 
+        }
+
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+        }
+
         /* --- レスポンシブ設定 --- */
         @media screen and (min-width: 801px) {
         .nav-logo {
@@ -287,6 +302,16 @@
 
         .gallery-card {
             flex: 0 0 85vw;
+        }
+
+        .archive-title {
+            font-size: 32px;
+            margin-bottom: var(--archive-title-margin-sp); 
+        }
+
+        .archive-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
         }
         }
 
