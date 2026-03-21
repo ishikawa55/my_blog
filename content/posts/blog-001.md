@@ -1,7 +1,7 @@
 +++
 title = '美言と真言'
 date = 2026-03-10
-tags = ["idea", "document"]
+tags = ["blog", "essay"]
 categories = ["文芸"]
 draft = false
 +++

@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pythonアルゴリズム | いしかわブログ</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            scrollbar-gutter: stable;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #666666;
+            --border-color: #a855f7;
+            --purple-accent: #6a1b9a;
+            --archive-title-margin-pc: 80px;
+            --archive-title-margin-sp: 40px;
+        }
+
+        body {
+            background-color: transparent;
+            color: var(--text-main);
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 700;
+            scroll-margin-top: 40px;
+        }
+
+        a { color: inherit; text-decoration: none; transition: 0.3s; }
+        img { max-width: 100%; height: auto; }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto !important;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        hr { border: none; border-top: 1px solid var(--border-color); margin: 40px 0; }
+
+         
+        .btn-action {
+            display: inline-block !important;
+            background-color: var(--purple-accent) !important; 
+            color: #ffffff !important;
+            padding: 10px 28px !important;
+            border-radius: 50px !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+             
+            transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease !important;
+        }
+
+         
+        .btn-action,
+        .read-more,
+        .post-summary,
+        .archive-item {
+            display: inline-block;
+            transition: transform 0.3s ease !important;
+            cursor: pointer;
+        }
+
+         
+        .btn-action:hover,
+        .read-more:hover,
+        .post-summary:hover,
+        .archive-item:hover {
+            transform: scale(1.03) !important;
+            opacity: 0.9;
+        }
+
+        .btn-action:hover {
+            background-color: #4a148c !important;
+            opacity: 1 !important;
+        }
+
+        .hero-gallery {
+            width: 100%;
+            margin: 60px 0;
+            overflow: hidden;
+            cursor: grab;
+            position: relative;
+            user-select: none;
+        }
+
+        .hero-gallery:active {
+            cursor: grabbing;
+        }
+
+        .gallery-scroll-container {
+            display: flex;
+            gap: 40px;
+            padding: 40px 20px;
+            will-change: transform;
+        }
+
+        .gallery-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-card {
+            flex: 0 0 600px;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+            border: 2px solid var(--purple-accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            pointer-events: none;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .section-title {
+            display: inline-block;
+            position: relative;
+            padding: .5em 1em;
+            border-right: 27px solid #8c25d0;
+            background-color: #f5f5f5;
+            color: #333333;
+            font-family: 'Noto Serif JP', serif;
+            font-weight: 700;
+            text-shadow: none !important;
+            transform: rotate(-1.5deg);
+            transform-style: preserve-3d;
+            z-index: 1;
+        }
+
+        .section-title::before {
+            content: "";
+            position: absolute;
+            bottom: 1px;
+            right: -22px;
+            width: 100%;
+            height: 50%;
+            transform: rotate(5deg);
+            background-color: rgba(0, 0, 0, 0.8);
+            filter: blur(4px);
+            transform: translateZ(-1px) rotate(4deg);
+            z-index: -1;
+        }
+
+        .profile-img-frame {
+            border: 3px solid var(--border-color);
+            padding: 6px;
+            background-color: #ffffff;
+            display: inline-block;
+            line-height: 0;
+        }
+
+        .profile-img-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+         
+        :not(pre) > code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f3e5f5;
+            color: #6a1b9a;
+            padding: 0.02em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
+            border: 1px solid #e1bee7;
+            margin: 0 2px;
+            display: inline-block;
+        }
+
+        pre {
+            background-color: #1e1e1e;
+            color: #dcdcdc;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 5px solid var(--border-color, #a855f7);
+            margin: 25px 0;
+            line-height: 1.5;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        pre code {
+            background-color: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            color: inherit;
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', monospace;
+            font-size: 14px;
+        }
+
+        .summary-desktop {
+            display: block !important;
+        }
+
+        .summary-mobile {
+            display: none !important;
+        }
+
+        .nav-logo a {
+            white-space: nowrap !important;
+            font-size: 28px !important;
+        }
+
+        .archive-title {
+            font-size: 48px;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: var(--archive-title-margin-pc); 
+        }
+
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+        }
+
+         
+        .button_line {
+            text-align: left;
+        }
+
+        .button_line a {
+            position: relative;
+            display: inline-flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 0 auto;
+            max-width: 200px;
+            padding: 10px 25px;
+            color: inherit;
+            transition: 0.3s ease-in-out;
+            font-weight: 600;
+            gap: 10px;
+        }
+
+        .button_line a:before {
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: rgba(170, 0, 255, 0.4);
+            transform: translateX(-50%);
+        }
+
+        .button_line a:after {
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: var(--border-color);
+            transform: scale(0, 1);
+            transform-origin: left top;
+            transition: transform .3s;
+        }
+
+        .button_line a:hover {
+            opacity: 0.7;
+        }
+
+        .button_line a:hover:after {
+            transform: scale(1, 1);
+        }
+
+         
+        .arrow {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 2px;
+            margin-top: 10px;
+            border-radius: 9999px;
+            background-color: #ba66ff;
+        }
+
+        .arrow::before {
+            content: "";
+            position: absolute;
+            top: calc(50% - 2px);
+            left: 0;
+            width: 20px;
+            height: 2px;
+            border-radius: 9999px;
+            background-color: #ba66ff;
+            transform: rotate(-45deg);
+            transform-origin: 2px 50%;
+        }
+
+         
+        @media screen and (min-width: 801px) {
+        .nav-logo {
+            padding-left: 40px;
+        }
+        }
+
+        @media screen and (max-width: 800px) {
+        .nav-inner {
+            flex-direction: column !important;
+            gap: 20px !important;
+            padding: 40px 20px !important;
+        }
+
+        .nav-logo, .nav-menu, .nav-spacer {
+            flex: none !important;
+            width: 100% !important;
+            text-align: center !important;
+            justify-content: center !important;
+        }
+
+        .nav-logo a {
+            padding-top: 20px !important;
+        }
+
+        .nav-menu {
+            display: flex !important;
+            gap: 20px !important;
+            font-size: 13px !important;
+        }
+
+        .btn-action {
+            padding: 5px 15px !important;
+            font-size: 12px !important;
+        }
+
+        .container {
+            padding: 0 15px !important;
+        }
+
+        .pc-only-br {
+            display: none;
+        }
+
+        .summary-desktop {
+            display: none !important;
+        }
+    
+        .summary-mobile {
+            display: block !important;
+            margin-top: 10px;
+        }
+
+        .gallery-card {
+            flex: 0 0 85vw;
+        }
+
+        .archive-title {
+            font-size: 32px;
+            margin-bottom: var(--archive-title-margin-sp); 
+        }
+
+        .archive-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        }
+
+         
+        #three-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<nav style="border-top: 4px solid #ac5fdd; border-bottom: 4px solid #ac5fdd; margin: 30px 0; width: 100%; display: flow-root;">
+    <div class="container nav-inner" style="display: flex; align-items: center; padding: 25px 20px;">
+        <div class="nav-logo" style="flex: 1; display: flex; justify-content: flex-start;">
+            <a href='http://localhost:1313/' style="font-family: 'Noto Serif JP', serif; font-size: 34px; font-weight: 500; letter-spacing: -0.02em; line-height: 1; color: var(--text-main); padding-top: 4px; white-space: nowrap;">
+                いしかわブログ
+            </a>
+        </div>
+        <div class="nav-menu" style="flex: 2; display: flex; justify-content: center; align-items: center; gap: 50px; font-size: 15px; font-weight: 500; letter-spacing: 0.1em;">
+            <a href='http://localhost:1313/' style="white-space: nowrap;">ホーム</a>
+            <a href='http://localhost:1313/about' style="white-space: nowrap;">自己紹介</a>
+            <a href='http://localhost:1313/posts' style="white-space: nowrap;">アーカイブ</a>
+        </div>
+        <div class="nav-spacer" style="flex: 1;"></div>
+    </div>
+</nav>
+
+<article class="container" style="padding: 80px 0; max-width: 700px;">
+    <header style="text-align: center; margin-bottom: 60px;">
+        <p style="color: var(--text-muted); font-size: 14px;">2026年3月14日</p>
+        <h1 style="font-family: 'EB Garamond', serif; font-size: 42px; line-height: 1.3;">Pythonアルゴリズム</h1>
+    </header>
+    <div style="font-size: 17px; line-height: 2; color: #333;">
+        <p>学習したアルゴリズムをまとめる</p>
+<div style="background: #fdfdfd; border: 1px solid #eee; border-left: 5px solid var(--border-color); padding: 20px; margin: 30px 0; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+    <p style="font-family: 'Noto Serif JP', serif; font-weight: 700; margin-top: 0; color: var(--purple-accent); font-size: 1.2em;">&#127939; この記事のメニュー</p>
+    <ul style="list-style: none; padding-left: 10px; margin-bottom: 0; line-height: 2;">
+        <li><a href="#深さ優先探索" style="color: var(--text-main); border-bottom: 1px dashed #ccc;">&#129698; 深さ優先探索</a></li>
+        <li><a href="#オイラー閉路" style="color: var(--text-main); border-bottom: 1px dashed #ccc;">&#129698; オイラー閉路</a></li>
+        <li><a href="#dijkstra" style="color: var(--text-main); border-bottom: 1px dashed #ccc;">&#129698; Dijkstra</a></li>
+        <li><a href="#2分ヒープを用いたdijkstra" style="color: var(--text-main); border-bottom: 1px dashed #ccc;">&#129698; 2分ヒープを用いたDijkstra</a></li>
+        <li><a href="#prim" style="color: var(--text-main); border-bottom: 1px dashed #ccc;">&#129698; Prim</a></li>
+        <li><a href="#bellman-ford" style="color: var(--text-main); border-bottom: 1px dashed #ccc;">&#129698; Bellman-Ford</a></li>
+        <li><a href="#ford-fulkerson" style="color: var(--text-main); border-bottom: 1px dashed #ccc;">&#129698; Ford-Fulkerson</a></li>
+        <li><a href="#最小カット" style="color: var(--text-main); border-bottom: 1px dashed #ccc;">&#129698; 最小カット</a></li>
+        <li><a href="#needleman-wunsch" style="color: var(--text-main); border-bottom: 1px dashed #ccc;">&#129698; Needleman-Wunsch</a></li>
+        <li><a href="#cellular-automaton" style="color: var(--text-main); border-bottom: 1px dashed #ccc;">&#129698; Cellular-Automaton</a></li>
+    </ul>
+</div>
+<h2 id="深さ優先探索">深さ優先探索</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> networkx <span style="color:#66d9ef">as</span> nx
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> deque
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_dfs</span>(G, s, traversed):
+</span></span><span style="display:flex;"><span>    traversed<span style="color:#f92672">.</span>add(s)
+</span></span><span style="display:flex;"><span>    print(s)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>neighbors(s):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> v <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> traversed:
+</span></span><span style="display:flex;"><span>            my_dfs(G, v, traversed)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># スタックを用いたver.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">dfs_stack</span>(G, s):
+</span></span><span style="display:flex;"><span>    traversed <span style="color:#f92672">=</span> set()
+</span></span><span style="display:flex;"><span>    q <span style="color:#f92672">=</span> deque()
+</span></span><span style="display:flex;"><span>    q<span style="color:#f92672">.</span>appendleft(s)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> q:
+</span></span><span style="display:flex;"><span>        u <span style="color:#f92672">=</span> q<span style="color:#f92672">.</span>popleft()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> u <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> traversed:
+</span></span><span style="display:flex;"><span>            print(u)
+</span></span><span style="display:flex;"><span>            traversed<span style="color:#f92672">.</span>add(u)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>neighbors(u):
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> v <span style="color:#f92672">in</span> traversed:
+</span></span><span style="display:flex;"><span>                    q<span style="color:#f92672">.</span>appendleft(v)
+</span></span></code></pre></div><h2 id="オイラー閉路">オイラー閉路</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> networkx <span style="color:#66d9ef">as</span> nx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_euler_test</span>(G):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>nodes():
+</span></span><span style="display:flex;"><span>        d <span style="color:#f92672">=</span> G<span style="color:#f92672">.</span>degree[v]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> d <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span></code></pre></div><h2 id="dijkstra">Dijkstra</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> networkx <span style="color:#66d9ef">as</span> nx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_extract_min</span>(D, X):
+</span></span><span style="display:flex;"><span>    arg_min <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    min_value <span style="color:#f92672">=</span> float(<span style="color:#e6db74">&#39;inf&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(D)):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> D[i] <span style="color:#f92672">&lt;</span> min_value:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> i <span style="color:#f92672">in</span> X:
+</span></span><span style="display:flex;"><span>                arg_min <span style="color:#f92672">=</span> i
+</span></span><span style="display:flex;"><span>                min_value <span style="color:#f92672">=</span> D[i]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> arg_min
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_Dijkstra</span>(G, s):
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> set(G<span style="color:#f92672">.</span>nodes)
+</span></span><span style="display:flex;"><span>    D <span style="color:#f92672">=</span> [float(<span style="color:#e6db74">&#39;inf&#39;</span>)] <span style="color:#f92672">*</span> nx<span style="color:#f92672">.</span>number_of_nodes(G)
+</span></span><span style="display:flex;"><span>    D[s] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> X:
+</span></span><span style="display:flex;"><span>        u <span style="color:#f92672">=</span> my_extract_min(D, X)
+</span></span><span style="display:flex;"><span>        X<span style="color:#f92672">.</span>remove(u)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>neighbors(u):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> v <span style="color:#f92672">in</span> X:
+</span></span><span style="display:flex;"><span>                new_distance <span style="color:#f92672">=</span> D[u] <span style="color:#f92672">+</span> G<span style="color:#f92672">.</span>edges[u, v][<span style="color:#e6db74">&#39;weight&#39;</span>]
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> D[v] <span style="color:#f92672">&gt;</span> new_distance:
+</span></span><span style="display:flex;"><span>                    D[v] <span style="color:#f92672">=</span> new_distance
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> D
+</span></span></code></pre></div><h2 id="2分ヒープを用いたdijkstra">2分ヒープを用いたDijkstra</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> networkx <span style="color:#66d9ef">as</span> nx
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> heapq
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_heap_Dijkstra</span>(G, s):
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> set(G<span style="color:#f92672">.</span>nodes)
+</span></span><span style="display:flex;"><span>    D <span style="color:#f92672">=</span> [float(<span style="color:#e6db74">&#39;inf&#39;</span>)] <span style="color:#f92672">*</span> nx<span style="color:#f92672">.</span>number_of_nodes(G) 
+</span></span><span style="display:flex;"><span>    D[s] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    Q <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    heapq<span style="color:#f92672">.</span>heappush(Q, (D[s], s))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> Q:
+</span></span><span style="display:flex;"><span>        u_distance, u <span style="color:#f92672">=</span> heapq<span style="color:#f92672">.</span>heappop(Q)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> D[u] <span style="color:#f92672">&lt;</span> u_distance:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>        X<span style="color:#f92672">.</span>remove(u)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>neighbors(u):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> v <span style="color:#f92672">in</span> X:
+</span></span><span style="display:flex;"><span>                new_distance <span style="color:#f92672">=</span> u_distance <span style="color:#f92672">+</span> G<span style="color:#f92672">.</span>edges[u, v][<span style="color:#e6db74">&#39;weight&#39;</span>]
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> D[v] <span style="color:#f92672">&gt;</span> new_distance:
+</span></span><span style="display:flex;"><span>                    D[v] <span style="color:#f92672">=</span> new_distance
+</span></span><span style="display:flex;"><span>                    heapq<span style="color:#f92672">.</span>heappush(Q, (new_distance, v))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> D
+</span></span></code></pre></div><h2 id="prim">Prim</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> networkx <span style="color:#66d9ef">as</span> nx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_extract_min</span>(D, X):
+</span></span><span style="display:flex;"><span>    arg_min <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    min_value <span style="color:#f92672">=</span> float(<span style="color:#e6db74">&#39;inf&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(D)):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> D[i] <span style="color:#f92672">&lt;</span> min_value:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> i <span style="color:#f92672">in</span> X:
+</span></span><span style="display:flex;"><span>                arg_min <span style="color:#f92672">=</span> i
+</span></span><span style="display:flex;"><span>                min_value <span style="color:#f92672">=</span> D[i]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> arg_min
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_Prim</span>(G, s):
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> set(G<span style="color:#f92672">.</span>nodes)
+</span></span><span style="display:flex;"><span>    D <span style="color:#f92672">=</span> [float(<span style="color:#e6db74">&#39;inf&#39;</span>)] <span style="color:#f92672">*</span> nx<span style="color:#f92672">.</span>number_of_nodes(G)
+</span></span><span style="display:flex;"><span>    D[s] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    P <span style="color:#f92672">=</span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> nx<span style="color:#f92672">.</span>number_of_nodes(G)
+</span></span><span style="display:flex;"><span>    A <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> X:
+</span></span><span style="display:flex;"><span>        u <span style="color:#f92672">=</span> my_extract_min(D, X)
+</span></span><span style="display:flex;"><span>        X<span style="color:#f92672">.</span>remove(u)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> u <span style="color:#f92672">!=</span> s:
+</span></span><span style="display:flex;"><span>            A<span style="color:#f92672">.</span>append((P[u], u))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>neighbors(u):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> v <span style="color:#f92672">in</span> X:
+</span></span><span style="display:flex;"><span>                new_distance <span style="color:#f92672">=</span> G<span style="color:#f92672">.</span>edges[u, v][<span style="color:#e6db74">&#39;weight&#39;</span>]
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> D[v] <span style="color:#f92672">&gt;</span> new_distance:
+</span></span><span style="display:flex;"><span>                    D[v] <span style="color:#f92672">=</span> new_distance
+</span></span><span style="display:flex;"><span>                    P[v] <span style="color:#f92672">=</span> u
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> A
+</span></span></code></pre></div><h2 id="bellman-ford">Bellman-Ford</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> networkx <span style="color:#66d9ef">as</span> nx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_Bellman_Ford</span>(G, s):
+</span></span><span style="display:flex;"><span>    n <span style="color:#f92672">=</span> nx<span style="color:#f92672">.</span>number_of_nodes(G)
+</span></span><span style="display:flex;"><span>    D <span style="color:#f92672">=</span> [float(<span style="color:#e6db74">&#39;inf&#39;</span>)] <span style="color:#f92672">*</span> n
+</span></span><span style="display:flex;"><span>    D[s] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, n):
+</span></span><span style="display:flex;"><span>        D_new <span style="color:#f92672">=</span> D[:]
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> u, v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>edges():
+</span></span><span style="display:flex;"><span>            new_distance <span style="color:#f92672">=</span> D[u] <span style="color:#f92672">+</span> G<span style="color:#f92672">.</span>edges[u, v][<span style="color:#e6db74">&#39;weight&#39;</span>]
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> D_new[v] <span style="color:#f92672">&gt;</span> new_distance:
+</span></span><span style="display:flex;"><span>                D_new[v] <span style="color:#f92672">=</span> new_distance
+</span></span><span style="display:flex;"><span>        D <span style="color:#f92672">=</span> D_new
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> u, v <span style="color:#f92672">in</span> G<span style="color:#f92672">.</span>edges():
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> D[v] <span style="color:#f92672">&gt;</span> D[u] <span style="color:#f92672">+</span> G<span style="color:#f92672">.</span>edges[u, v][<span style="color:#e6db74">&#39;weight&#39;</span>]:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> (<span style="color:#66d9ef">False</span>, D)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (<span style="color:#66d9ef">True</span>, D)
+</span></span></code></pre></div><h2 id="ford-fulkerson">Ford-Fulkerson</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> networkx <span style="color:#66d9ef">as</span> nx
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> deque
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 残余ネットワークから増加経路があるか判定する関数</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_augmentpath</span>(N, s, t):
+</span></span><span style="display:flex;"><span>    P <span style="color:#f92672">=</span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> nx<span style="color:#f92672">.</span>number_of_nodes(N)
+</span></span><span style="display:flex;"><span>    visited <span style="color:#f92672">=</span> set()
+</span></span><span style="display:flex;"><span>    stack <span style="color:#f92672">=</span> deque()
+</span></span><span style="display:flex;"><span>    stack<span style="color:#f92672">.</span>appendleft(s)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> stack:
+</span></span><span style="display:flex;"><span>        v <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span>popleft()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> v <span style="color:#f92672">==</span> t:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> P, <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> v <span style="color:#f92672">in</span> visited:
+</span></span><span style="display:flex;"><span>            visited<span style="color:#f92672">.</span>add(v)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> w <span style="color:#f92672">in</span> N<span style="color:#f92672">.</span>neighbors(v):
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> w <span style="color:#f92672">in</span> visited <span style="color:#f92672">and</span> N<span style="color:#f92672">.</span>edges[v, w][<span style="color:#e6db74">&#39;weight&#39;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>                    stack<span style="color:#f92672">.</span>appendleft(w)
+</span></span><span style="display:flex;"><span>                    P[w] <span style="color:#f92672">=</span> v
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> P, <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">restore_shortestpath</span>(u, v, P):
+</span></span><span style="display:flex;"><span>    path <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    temp <span style="color:#f92672">=</span> v
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> temp <span style="color:#f92672">!=</span> u:
+</span></span><span style="display:flex;"><span>        parent <span style="color:#f92672">=</span> P[temp]
+</span></span><span style="display:flex;"><span>        path<span style="color:#f92672">.</span>append((parent, temp))
+</span></span><span style="display:flex;"><span>        temp <span style="color:#f92672">=</span> parent
+</span></span><span style="display:flex;"><span>    path<span style="color:#f92672">.</span>reverse()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> path
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">min_capacity</span>(N, path):
+</span></span><span style="display:flex;"><span>    min_cap <span style="color:#f92672">=</span> float(<span style="color:#e6db74">&#39;inf&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> u, v <span style="color:#f92672">in</span> path:
+</span></span><span style="display:flex;"><span>        capacity <span style="color:#f92672">=</span> N<span style="color:#f92672">.</span>edges[u, v][<span style="color:#e6db74">&#39;weight&#39;</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> capacity <span style="color:#f92672">&lt;</span> min_cap:
+</span></span><span style="display:flex;"><span>            min_cap <span style="color:#f92672">=</span> capacity
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> min_cap
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">increase_flow</span>(G, N, path, amount, flow):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> u, v <span style="color:#f92672">in</span> path:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> G<span style="color:#f92672">.</span>has_edge(u, v):
+</span></span><span style="display:flex;"><span>            flow[(u, v)] <span style="color:#f92672">+=</span> amount
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            flow[(v, u)] <span style="color:#f92672">-=</span> amount
+</span></span><span style="display:flex;"><span>        N<span style="color:#f92672">.</span>edges[u, v][<span style="color:#e6db74">&#39;weight&#39;</span>] <span style="color:#f92672">-=</span> amount
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> N<span style="color:#f92672">.</span>has_edge(v, u):
+</span></span><span style="display:flex;"><span>            N<span style="color:#f92672">.</span>edges[v, u][<span style="color:#e6db74">&#39;weight&#39;</span>] <span style="color:#f92672">+=</span> amount
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            N<span style="color:#f92672">.</span>add_edge(v, u, weight<span style="color:#f92672">=</span>amount)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_Ford_Fulkerson</span>(G, s, t):
+</span></span><span style="display:flex;"><span>    N <span style="color:#f92672">=</span> G<span style="color:#f92672">.</span>copy()
+</span></span><span style="display:flex;"><span>    f <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> u, v <span style="color:#f92672">in</span> N<span style="color:#f92672">.</span>edges:
+</span></span><span style="display:flex;"><span>        f[(u, v)] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    P, is_found <span style="color:#f92672">=</span> find_augmentpath(N, s, t)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> is_found:
+</span></span><span style="display:flex;"><span>        augmentpath <span style="color:#f92672">=</span> restore_shortestpath(s, t, P)
+</span></span><span style="display:flex;"><span>        min_cap <span style="color:#f92672">=</span> min_capacity(N, augmentpath)
+</span></span><span style="display:flex;"><span>        increase_flow(G, N, augmentpath, min_cap, f)
+</span></span><span style="display:flex;"><span>        P, is_found <span style="color:#f92672">=</span> find_augmentpath(N, s, t)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> N, f
+</span></span></code></pre></div><h2 id="最小カット">最小カット</h2>
+<p>Ford-Fulkersonアルゴリズムの関数を用いる</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> networkx <span style="color:#66d9ef">as</span> nx
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> deque
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">mincut_dfs</span>(N, s):
+</span></span><span style="display:flex;"><span>    visited <span style="color:#f92672">=</span> set()
+</span></span><span style="display:flex;"><span>    stack <span style="color:#f92672">=</span> deque()
+</span></span><span style="display:flex;"><span>    stack<span style="color:#f92672">.</span>appendleft(s)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> stack:
+</span></span><span style="display:flex;"><span>        v <span style="color:#f92672">=</span> stack<span style="color:#f92672">.</span>popleft()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> v <span style="color:#f92672">in</span> visited:
+</span></span><span style="display:flex;"><span>            visited<span style="color:#f92672">.</span>add(v)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> w <span style="color:#f92672">in</span> N<span style="color:#f92672">.</span>neighbors(v):
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> w <span style="color:#f92672">in</span> visited <span style="color:#f92672">and</span> N<span style="color:#f92672">.</span>edges[v, w][<span style="color:#e6db74">&#39;weight&#39;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>                    stack<span style="color:#f92672">.</span>appendleft(w)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> visited, set(N<span style="color:#f92672">.</span>nodes)<span style="color:#f92672">-</span>visited
+</span></span></code></pre></div><h2 id="needleman-wunsch">Needleman-Wunsch</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_Needleman_Wunsch</span>(s1, s2, M, d):
+</span></span><span style="display:flex;"><span>    m <span style="color:#f92672">=</span> len(s1)
+</span></span><span style="display:flex;"><span>    n <span style="color:#f92672">=</span> len(s2)
+</span></span><span style="display:flex;"><span>    D <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>    D[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        D[i, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>d<span style="color:#f92672">*</span>i
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        D[<span style="color:#ae81ff">0</span>, j] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>d<span style="color:#f92672">*</span>j
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>            D[i, j] <span style="color:#f92672">=</span> max(D[i, j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> d, D[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, j] <span style="color:#f92672">-</span> d, D[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> M[s1[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], s2[j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> D[m, n]
+</span></span></code></pre></div><h2 id="cellular-automaton">Cellular-Automaton</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cellular_Automaton</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, cells, ruleset):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>cells <span style="color:#f92672">=</span> cells<span style="color:#f92672">.</span>copy()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>len <span style="color:#f92672">=</span> len(cells)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>ruleset <span style="color:#f92672">=</span> ruleset
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">current_state</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>cells
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_str</span>(self, char):
+</span></span><span style="display:flex;"><span>        result <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>len):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>cells[i] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>                result <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39; &#39;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                result <span style="color:#f92672">+=</span> char
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __str__(self):
+</span></span><span style="display:flex;"><span>        result <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>len):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>cells[i] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>                result <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39; &#39;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                result <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;*&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">transition</span>(self):
+</span></span><span style="display:flex;"><span>        next_cells <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>len
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>len):
+</span></span><span style="display:flex;"><span>            neighbors <span style="color:#f92672">=</span> (self<span style="color:#f92672">.</span>cells[(i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> self<span style="color:#f92672">.</span>len], self<span style="color:#f92672">.</span>cells[i], self<span style="color:#f92672">.</span>cells[(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> self<span style="color:#f92672">.</span>len])
+</span></span><span style="display:flex;"><span>            next_cells[i] <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ruleset[neighbors]
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>cells <span style="color:#f92672">=</span> next_cells
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 実行例</span>
+</span></span><span style="display:flex;"><span>ruleset <span style="color:#f92672">=</span> { (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>) : <span style="color:#ae81ff">0</span>, (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>): <span style="color:#ae81ff">1</span>, (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>) : <span style="color:#ae81ff">1</span>, (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>) : <span style="color:#ae81ff">1</span>, (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>) : <span style="color:#ae81ff">1</span>, (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>) : <span style="color:#ae81ff">0</span>, (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>) : <span style="color:#ae81ff">0</span>, (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>) : <span style="color:#ae81ff">0</span>}
+</span></span><span style="display:flex;"><span>init_state <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">75</span>
+</span></span><span style="display:flex;"><span>init_state[<span style="color:#ae81ff">37</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>ca <span style="color:#f92672">=</span> Cellular_Automaton(init_state, ruleset)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">37</span>):
+</span></span><span style="display:flex;"><span>    print(ca)
+</span></span><span style="display:flex;"><span>    ca<span style="color:#f92672">.</span>transition()
+</span></span></code></pre></div>
+    </div>
+    <div class="button_line" style="margin-top: 60px; border-top: 1px solid #a855f7; padding-top: 20px;">
+        <a href="http://localhost:1313/posts">
+            <span class="arrow"></span>
+            アーカイブへ</a>
+    </div>
+</article>
+<div id="three-bg"></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.150.0/build/three.module.js"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+
+const init = () => {
+    const container = document.getElementById('three-bg');
+    if (!container) return;
+
+    
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
+    camera.position.z = 1000;
+
+    
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+
+    
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(1500 * 3);
+    for (let i = 0; i < 1500 * 3; i++) {
+        positions[i] = (Math.random() - 0.5) * 2000;
+    }
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    const material = new THREE.PointsMaterial({
+        size: 3,
+        color: 0x6a1b9a, 
+        transparent: true,
+        opacity: 0.6
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    
+    let mouseX = 0, mouseY = 0;
+    document.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX - window.innerWidth / 2) * 0.5;
+        mouseY = (e.clientY - window.innerHeight / 2) * 0.5;
+    });
+
+    
+    const animate = () => {
+        requestAnimationFrame(animate);
+        particles.rotation.x += 0.0005;
+        particles.rotation.y += 0.0005;
+        
+        
+        camera.position.x += (mouseX - camera.position.x) * 0.05;
+        camera.position.y += (-mouseY - camera.position.y) * 0.05;
+        camera.lookAt(scene.position);
+        
+        renderer.render(scene, camera);
+    };
+    animate();
+
+    
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+};
+
+
+init();
+</script>
+
+<footer style="margin-top: 100px; padding-bottom: 60px; text-align: center; position: relative; z-index: 10;">
+    <hr style="border: none; border-top: 1px solid #a855f7; margin-bottom: 40px;">
+    <p style="font-family: 'EB Garamond', serif; font-size: 18px; letter-spacing: 0.05em; margin-bottom: 10px;">
+        いしかわブログ
+    </p>
+    <p style="font-size: 12px; color: var(--text-muted); letter-spacing: 0.1em;">
+        &copy; 2026 ishikawa. All Rights Reserved.
+    </p>
+</footer>
+</body>
+</html>
+
