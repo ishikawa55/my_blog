@@ -13,7 +13,7 @@
       <link>http://localhost:1313/posts/dev-python-001/</link>
       <pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/dev-python-001/</guid>
-      <description>「優しい嘘」という言葉がある。</description>
+      <description>学習したアルゴリズムをまとめる&#xA;&amp;#127939; この記事のメニュー&#xA;&amp;#129698; 深さ優先探索 &amp;#129698; オイラー閉路 &amp;#129698; Dijkstra &amp;#129698; 2分ヒープを用いたDijkstra &amp;#129698; Prim &amp;#129698; Bellman-Ford &amp;#129698; Ford-Fulkerson &amp;#129698; 最小カット &amp;#129698; Needleman-Wunsch &amp;#129698; Cellular-Automaton 深さ優先探索 import networkx as nx from collections import deque def my_dfs(G, s, traversed): traversed.add(s) print(s) for v in G.neighbors(s): if v not in traversed: my_dfs(G, v, traversed) # スタックを用いたver. def dfs_stack(G, s): traversed = set() q = deque() q.appendleft(s) while q: u = q.popleft() if u not in traversed: print(u) traversed.</description>
     </item>
   </channel>
 </rss>
