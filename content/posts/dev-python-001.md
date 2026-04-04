@@ -1,7 +1,7 @@
 +++
 title = 'Python 累積和'
-date = 2026-03-14
-tags = ["dev", "python", "algorithm"]
+date = 2026-03-24
+tags = ["dev", "python", "sum"]
 categories = ["技術"]
 draft = false
 +++
