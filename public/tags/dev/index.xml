@@ -6,12 +6,19 @@
     <description>Recent content in Dev on いしかわブログ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 14 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python 二次元区間和</title>
+      <link>http://localhost:1313/posts/dev-python-002/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/dev-python-002/</guid>
+      <description>今回の問題は「二次元区間和」である。H 行 W 列 の行列 A があり、2 つの行・列番号の組 {a , b} , {c , d} における区間和 S({a,b} , {c,d}) (a ≦ c , b ≦ d) を以下のように定義する。&#xA;S({a,b} , {c,d}) = A[a][b] + A[a][b+1] + ... + A[a][d] + A[a+1][1] + ... + A[a+1][d] + ... + A[c][1] + ... + A[c][d]&#xA;各クエリの累積和を問題文で与えられた計算式の通り計算を行うと実行時間制限に間に合わないため、事前に値を計算したり既に計算した値を再利用したりすることで、計算量を落とすことが有効的と言える。&#xA;ans[i][j] += ans[i - 1][j] + ans[i][j - 1] - ans[i - 1][j - 1]&#xA;は以下の数学的処理を行っている。&#xA;ans[i-1][j] : 一行上までの合計</description>
+    </item>
     <item>
       <title>Python 累積和</title>
       <link>http://localhost:1313/posts/dev-python-001/</link>
-      <pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/dev-python-001/</guid>
       <description>pythonで累積和の問題を解いていたとき、実行時間が遅くエラー判定になったので整理しておく。2つのコードの違いは「毎回計算する」か「あらかじめ計算する」である。&#xA;私が書いたコードはクエリごとに A[0] + A[1] + ... + A[t-1] を毎回計算する必要があり、全体で O(n × k) の計算量になる。&#xA;例えば&#xA;クエリ1：A[0]〜A[999]&#xA;クエリ2：A[0]〜A[1000]&#xA;であるとき、A[0]〜A[999] をまた最初から計算し直していることになる。&#xA;模範解答では累積和を事前に作ることで、全体で O(n + k) の計算量にすることが出来る。&#xA;私の回答 N, K = map(int, input().split()) A = [int(input()) for _ in range(N)] for _ in range(K): t = int(input()) ans = 0 for i in range(t): ans += A[i] print(ans) 模範解答 N, K = map(int, input().split()) A = [int(input()) for _ in range(N)] ans = [0] + A[:] for i in range(1, N + 1): ans[i] += ans[i - 1] for _ in range(K): q = int(input()) print(ans[q]) </description>
     </item>
