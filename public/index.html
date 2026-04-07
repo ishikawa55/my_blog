@@ -5,700 +5,252 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>いしかわブログ</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        html {
-            scrollbar-gutter: stable;
-            scroll-behavior: smooth;
-        }
+    :root { --color-primary: #6a1b9a; --color-accent: #ac5fdd; --color-text: #333333; --color-bg: #EDEBE9; --header-height: 80px; }
 
-        :root {
-            --bg-color: #ffffff;
-            --text-main: #1a1a1a;
-            --text-muted: #666666;
-            --border-color: #a855f7;
-            --purple-accent: #6a1b9a;
-            --archive-title-margin-pc: 80px;
-            --archive-title-margin-sp: 40px;
-        }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; padding: 0; font-family: 'Noto Sans JP', sans-serif; color: var(--color-text); background-color: var(--color-bg); line-height: 1.6; padding-top: var(--header-height); }
 
-        body {
-            background-color: transparent;
-            color: var(--text-main);
-            font-family: 'Noto Sans JP', sans-serif;
-            margin: 0;
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
-        }
+     
+    .floating-header { position: fixed; top: 20px; left: 20px; right: 20px; height: var(--header-height); z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; box-sizing: border-box; transition: all 0.3s ease; }
+    .floating-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); z-index: -1; }
+    .header-logo a { text-decoration: none; font-weight: 700; font-size: 1.5rem; color: var(--color-primary); display: flex; align-items: center; transition: opacity 0.3s; }
+    .header-logo a:hover { opacity: 0.8; }
 
-        h1, h2, h3, .serif {
-            font-family: 'Noto Serif JP', serif;
-            font-weight: 700;
-            scroll-margin-top: 40px;
-        }
+     
+    .hamburger { display: none; background: none; border: none; cursor: pointer; width: 32px; height: 24px; position: relative; z-index: 1001; }
+    .hamburger span { position: absolute; width: 100%; height: 2px; background-color: var(--color-primary); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+    .hamburger span:nth-child(3) { bottom: 0; }
+    .hamburger.is-active span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+    .hamburger.is-active span:nth-child(2) { opacity: 0; }
+    .hamburger.is-active span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
 
-        a { color: inherit; text-decoration: none; transition: 0.3s; }
-        img { max-width: 100%; height: auto; }
+    .nav-menu { display: flex; gap: 2.5rem; }
+    .nav-menu a { text-decoration: none; color: var(--color-text); font-weight: 500; position: relative; transition: color 0.3s; }
+    .nav-menu a:hover { color: var(--color-accent); }
+    .nav-menu a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: var(--color-accent); transition: width 0.3s ease; }
+    .nav-menu a:hover::after { width: 100%; }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto !important;
-            padding: 0 20px;
-            width: 100%;
-            box-sizing: border-box;
-        }
+     
+    .youtube-hero { width: 100%; position: relative; padding: 40px 4% 40px; max-width: 1000px; margin: 0 auto; box-sizing: border-box; }
+    .youtube-wrapper { position: relative; width: 100%; padding-bottom: 56.25%;   height: 0; overflow: hidden; background-color: #000;   }
+    .youtube-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        hr { border: none; border-top: 1px solid var(--border-color); margin: 40px 0; }
+     
+    .section { padding: 120px 4%; max-width: 1200px; margin: 0 auto; }
+    .section-title { position: relative; font-size: 2rem; font-weight: 550; color: #333333; background-color: #ffffff; padding: 0px 0px 0px 15px; margin-bottom: 3rem; display: inline-block; letter-spacing: 0.05em; }
+    .section-title::before { content: ''; position: absolute; top: 0; left: 0; width: 8px; height: 100%; background-color: #0af244;   }
+
+    .fade-in-up { opacity: 0; transform: translateY(50px); transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1); }
+    .fade-in-up.is-visible { opacity: 1; transform: translateY(0); }
+
+    .hero { height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; background-color: #fafafa; position: relative; overflow: hidden; margin-top: calc(var(--header-height) * -1); }
+    .hero::before { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(135deg, rgba(106, 27, 154, 0.05) 0%, rgba(172, 95, 221, 0.1) 100%); z-index: 0; }
+    .hero-content { position: relative; z-index: 1; text-align: center; }
+    .hero-title { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 700; line-height: 1.2; color: var(--color-primary); margin-bottom: 1.5rem; letter-spacing: 0.02em; }
+    .hero-subtitle { font-size: 1.25rem; color: var(--color-text); font-weight: 500; }
+
+    .btn-view-more { display: inline-flex; align-items: center; justify-content: center; padding: 16px 48px; border: 1px solid var(--color-primary); color: var(--color-primary); text-decoration: none; font-weight: 700; font-size: 1rem; letter-spacing: 0.1em; position: relative; overflow: hidden; transition: color 0.4s ease; margin-top: 2rem; background: transparent; }
+    .btn-view-more::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%; background-color: var(--color-primary); transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1); z-index: -1; }
+    .btn-view-more:hover { color: #ffffff; }
+    .btn-view-more:hover::before { width: 100%; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 40px; }
+    .card { display: block; text-decoration: none; color: inherit; background: #fff; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); transition: transform 0.4s ease, box-shadow 0.4s ease; }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(106, 27, 154, 0.12); }
+    .card-img-wrapper { width: 100%; height: 220px; overflow: hidden; }
+    .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .card:hover .card-img { transform: scale(1.05); }
+    .card-content { padding: 24px; }
+    .card-date { font-size: 0.85rem; color: var(--color-accent); font-weight: 700; margin-bottom: 8px; display: block; }
+    .card-title { font-size: 1.25rem; font-weight: 700; line-height: 1.5; margin: 0; color: var(--color-text); transition: color 0.3s ease; }
+    .card:hover .card-title { color: var(--color-primary); }
+
+     
+    .single-article { padding-top: 130px; max-width: 900px; margin: 0 auto; }
+    .article-container { background: #ffffff; padding: 60px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04); }
+    .article-date { color: var(--color-accent); font-weight: 700; font-size: 0.95rem; display: block; margin-bottom: 1rem; letter-spacing: 0.05em; }
+    .article-title { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; color: var(--color-primary); line-height: 1.4; margin-bottom: 2.5rem; }
+    .article-image-wrapper { width: 100%; overflow: hidden; margin-bottom: 3rem; }
+    .article-image { width: 100%; height: auto; display: block; }
+    .article-footer { text-align: center; margin-top: 5rem; padding-top: 3rem; border-top: 1px solid #eee; }
+
+     
+    .article-content { font-size: 1.05rem; line-height: 1.9; color: #333; }
+    .article-content h2 { font-size: 1.6rem; color: var(--color-primary); margin: 4rem 0 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #f0f0f0; }
+    .article-content h3 { font-size: 1.3rem; color: var(--color-text); margin: 3rem 0 1rem; padding-left: 1rem; border-left: 4px solid var(--color-accent); }
+    .article-content p { margin-bottom: 1.5rem; }
+    .article-content img { max-width: 100%; height: auto; margin: 2rem 0; }
+    .article-content a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 4px; transition: opacity 0.3s; }
+    .article-content a:hover { opacity: 0.7; }
+    .article-content ul, .article-content ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .article-content li { margin-bottom: 0.5rem; }
+
+     
+    .article-content pre { background-color: #282c34; color: #abb2bf; padding: 1.5rem; overflow-x: auto; margin: 2rem 0; font-size: 0.95rem; line-height: 1.5; }
+    .article-content code { font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }
+    p > code, li > code { background-color: #f5f5f5; color: var(--color-primary); padding: 0.2em 0.4em; font-size: 0.9em; margin: 0 0.2em; }
+
+    @media screen and (max-width: 900px) {
+         
+        .hamburger { display: block; }
+        .nav-menu { position: absolute; top: calc(100% + 5px); left: 0; width: 100%; height: 5vh; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); flex-direction: row; justify-content: space-evenly; align-items: center; gap: 0; opacity: 0; visibility: hidden; transform: translateY(-15px); transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+        .nav-menu.is-active { opacity: 1; visibility: visible; transform: translateY(0); }
+        .nav-menu a { font-size: 0.95rem; font-weight: 700; padding: 10px; }
 
          
-        .btn-action {
-            display: inline-block !important;
-            background-color: var(--purple-accent) !important; 
-            color: #ffffff !important;
-            padding: 10px 28px !important;
-            border-radius: 50px !important;
-            font-size: 14px !important;
-            font-weight: 500 !important;
-            text-decoration: none !important;
-             
-            transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease !important;
-        }
+        .youtube-hero { padding: 80px 0 40px; }
+        .youtube-wrapper { box-shadow: none; }
 
          
-        .btn-action,
-        .read-more,
-        .post-summary,
-        .archive-item {
-            display: inline-block;
-            transition: transform 0.3s ease !important;
-            cursor: pointer;
-        }
+        .floating-header { top: 20px; left: 20px; right: 20px; }
 
          
-        .btn-action:hover,
-        .read-more:hover,
-        .post-summary:hover,
-        .archive-item:hover {
-            transform: scale(1.03) !important;
-            opacity: 0.9;
-        }
-
-        .btn-action:hover {
-            background-color: #4a148c !important;
-            opacity: 1 !important;
-        }
-
-        .hero-gallery {
-            width: 100%;
-            margin: 60px 0;
-            overflow: hidden;
-            cursor: grab;
-            position: relative;
-            user-select: none;
-        }
-
-        .hero-gallery:active {
-            cursor: grabbing;
-        }
-
-        .gallery-scroll-container {
-            display: flex;
-            gap: 40px;
-            padding: 40px 20px;
-            will-change: transform;
-        }
-
-        .gallery-scroll-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        .gallery-card {
-            flex: 0 0 600px;
-            width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9;
-            perspective: 1000px;
-        }
-
-        .card-inner {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease-out;
-            border: 2px solid var(--purple-accent);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            pointer-events: none;
-            background-color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .card-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-
-        .section-title {
-            display: inline-block;
-            position: relative;
-            padding: .5em 1em;
-            border-right: 27px solid #8c25d0;
-            background-color: #f5f5f5;
-            color: #333333;
-            font-family: 'Noto Serif JP', serif;
-            font-weight: 700;
-            text-shadow: none !important;
-            transform: rotate(-1.5deg);
-            transform-style: preserve-3d;
-            z-index: 1;
-        }
-
-        .section-title::before {
-            content: "";
-            position: absolute;
-            bottom: 1px;
-            right: -22px;
-            width: 100%;
-            height: 50%;
-            transform: rotate(5deg);
-            background-color: rgba(0, 0, 0, 0.8);
-            filter: blur(4px);
-            transform: translateZ(-1px) rotate(4deg);
-            z-index: -1;
-        }
-
-        .profile-img-frame {
-            border: 3px solid var(--border-color);
-            padding: 6px;
-            background-color: #ffffff;
-            display: inline-block;
-            line-height: 0;
-        }
-
-        .profile-img-frame img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-         
-        :not(pre) > code {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #f3e5f5;
-            color: #6a1b9a;
-            padding: 0.02em 0.4em;
-            border-radius: 4px;
-            font-size: 0.9em;
-            border: 1px solid #e1bee7;
-            margin: 0 2px;
-            display: inline-block;
-        }
-
-        pre {
-            background-color: #1e1e1e;
-            color: #dcdcdc;
-            padding: 20px;
-            border-radius: 8px;
-            overflow-x: auto;
-            border-left: 5px solid var(--border-color, #a855f7);
-            margin: 25px 0;
-            line-height: 1.5;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        }
-
-        pre code {
-            background-color: transparent !important;
-            border: none !important;
-            padding: 0 !important;
-            color: inherit;
-            font-family: 'Consolas', 'Monaco', 'Andale Mono', monospace;
-            font-size: 14px;
-        }
-
-        .summary-desktop {
-            display: block !important;
-        }
-
-        .summary-mobile {
-            display: none !important;
-        }
-
-        .nav-logo a {
-            white-space: nowrap !important;
-            font-size: 28px !important;
-        }
-
-        .archive-title {
-            font-size: 48px;
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: var(--archive-title-margin-pc); 
-        }
-
-        .archive-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 60px;
-        }
-
-         
-        .button_line {
-            text-align: left;
-        }
-
-        .button_line a {
-            position: relative;
-            display: inline-flex;
-            justify-content: space-around;
-            align-items: center;
-            margin: 0 auto;
-            max-width: 200px;
-            padding: 10px 25px;
-            color: inherit;
-            transition: 0.3s ease-in-out;
-            font-weight: 600;
-            gap: 10px;
-        }
-
-        .button_line a:before {
-            position: absolute;
-            bottom: 0px;
-            left: 50%;
-            content: '';
-            width: 100%;
-            height: 2px;
-            background: rgba(170, 0, 255, 0.4);
-            transform: translateX(-50%);
-        }
-
-        .button_line a:after {
-            position: absolute;
-            bottom: 0px;
-            left: 0;
-            content: '';
-            width: 100%;
-            height: 2px;
-            background: var(--border-color);
-            transform: scale(0, 1);
-            transform-origin: left top;
-            transition: transform .3s;
-        }
-
-        .button_line a:hover {
-            opacity: 0.7;
-        }
-
-        .button_line a:hover:after {
-            transform: scale(1, 1);
-        }
-
-         
-        .arrow {
-            position: relative;
-            display: inline-block;
-            width: 40px;
-            height: 2px;
-            margin-top: 10px;
-            border-radius: 9999px;
-            background-color: #ba66ff;
-        }
-
-        .arrow::before {
-            content: "";
-            position: absolute;
-            top: calc(50% - 2px);
-            left: 0;
-            width: 20px;
-            height: 2px;
-            border-radius: 9999px;
-            background-color: #ba66ff;
-            transform: rotate(-45deg);
-            transform-origin: 2px 50%;
-        }
-
-         
-        @media screen and (min-width: 801px) {
-        .nav-logo {
-            padding-left: 40px;
-        }
-        }
-
-        @media screen and (max-width: 800px) {
-        .nav-inner {
-            flex-direction: column !important;
-            gap: 20px !important;
-            padding: 40px 20px !important;
-        }
-
-        .nav-logo, .nav-menu, .nav-spacer {
-            flex: none !important;
-            width: 100% !important;
-            text-align: center !important;
-            justify-content: center !important;
-        }
-
-        .nav-logo a {
-            padding-top: 20px !important;
-        }
-
-        .nav-menu {
-            display: flex !important;
-            gap: 20px !important;
-            font-size: 13px !important;
-        }
-
-        .btn-action {
-            padding: 5px 15px !important;
-            font-size: 12px !important;
-        }
-
-        .container {
-            padding: 0 15px !important;
-        }
-
-        .pc-only-br {
-            display: none;
-        }
-
-        .summary-desktop {
-            display: none !important;
-        }
-    
-        .summary-mobile {
-            display: block !important;
-            margin-top: 10px;
-        }
-
-        .gallery-card {
-            flex: 0 0 85vw;
-        }
-
-        .archive-title {
-            font-size: 32px;
-            margin-bottom: var(--archive-title-margin-sp); 
-        }
-
-        .archive-grid {
-            grid-template-columns: 1fr;
-            gap: 40px;
-        }
-        }
-
-         
-        #three-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background-color: #ffffff;
-        }
+        .single-article { padding-top: 100px; }
+        .article-container { padding: 30px 20px; box-shadow: none; }
+    }
     </style>
 </head>
+
 <body>
 
-<nav style="border-top: 4px solid #ac5fdd; border-bottom: 4px solid #ac5fdd; margin: 30px 0; width: 100%; display: flow-root;">
-    <div class="container nav-inner" style="display: flex; align-items: center; padding: 25px 20px;">
-        <div class="nav-logo" style="flex: 1; display: flex; justify-content: flex-start;">
-            <a href='http://localhost:1313/' style="font-family: 'Noto Serif JP', serif; font-size: 34px; font-weight: 500; letter-spacing: -0.02em; line-height: 1; color: var(--text-main); padding-top: 4px; white-space: nowrap;">
-                いしかわブログ
-            </a>
-        </div>
-        <div class="nav-menu" style="flex: 2; display: flex; justify-content: center; align-items: center; gap: 50px; font-size: 15px; font-weight: 500; letter-spacing: 0.1em;">
-            <a href='http://localhost:1313/' style="white-space: nowrap;">ホーム</a>
-            <a href='http://localhost:1313/about' style="white-space: nowrap;">自己紹介</a>
-            <a href='http://localhost:1313/posts' style="white-space: nowrap;">アーカイブ</a>
-        </div>
-        <div class="nav-spacer" style="flex: 1;"></div>
+  <header class="floating-header">
+    <div class="header-logo">
+        <a href="http://localhost:1313/">
+            いしかわブログ
+        </a>
     </div>
-</nav>
 
-<main class="container">
-    <section class="hero-gallery" id="hero-gallery">
-    <div class="gallery-scroll-container" id="scroll-container">
-        <div class="gallery-card">
-            <div class="card-inner">
-                <img src="http://localhost:1313/images/image-02.png" class="card-img">
-            </div>
-        </div>
-        <div class="gallery-card">
-            <div class="card-inner">
-                <img src="http://localhost:1313/images/image-03.png" class="card-img">
-            </div>
-        </div>
-        <div class="gallery-card">
-            <div class="card-inner">
-                <img src="http://localhost:1313/images/image-04.png" class="card-img">
-            </div>
-        </div>
-        <div class="gallery-card">
-            <div class="card-inner">
-                <img src="http://localhost:1313/images/image-05.png" class="card-img">
-            </div>
-        </div>
-        <div class="gallery-card">
-            <div class="card-inner">
-                <img src="http://localhost:1313/images/image-06.png" class="card-img">
-            </div>
-        </div>
-        <div class="gallery-card">
-            <div class="card-inner">
-                <img src="http://localhost:1313/images/image-07.png" class="card-img">
-            </div>
-        </div>
+    <button class="hamburger" id="js-hamburger" aria-label="メニューを開閉する">
+        <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav-menu" id="js-nav-menu">
+        <a href="http://localhost:1313/">Home</a>
+        <a href="http://localhost:1313/posts/">Articles</a>
+        <a href="http://localhost:1313/about/">About</a>
+    </nav>
+</header>
+
+
+  <main>
+
+<section class="youtube-hero">
+    <div class="youtube-wrapper fade-in-up">
+        <iframe
+        src="https://www.youtube.com/embed/pxGV43Tzua8?autoplay=1&mute=1&loop=1&playlist=pxGV43Tzua8&controls=0&disablekb=1&modestbranding=1&playsinline=1"
+        frameborder="0"
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+        </iframe>
     </div>
-    </section>
+</section>
 
-    <header style="text-align: left; margin-top: 100px; margin-bottom: 40px;">
-        <h2 class="section-title" style="font-size: 28px;">新着記事</h2>
-    </header>
+<section class="section">
+    <h2 class="section-title fade-ip">
+        ブログについて
+    </h2>
+    <div class="fade-in-up" style="max-width: 800px; font-size: 1.1rem; line-height: 2;">
+        <p></p>
+        <p>このブログは日々の備忘録であり、資本主義で<b>如何に幸せを築くか</b>という視点を持ち続けるための</p>
+        <a href="http://localhost:1313/about/" class="btn-view-more">VIEW MORE</a>
+    </div>
+</section>
 
-    <section style="position: relative; margin-bottom: 80px;">
+<section class="section">
+    <h2 class="section-title fade-in-up">
+        最新の記事
+    </h2>
+    <div class="card-grid">
         
-        <a href="http://localhost:1313/posts/dev-python-002/">
-            <div class="post-summary", style="padding: 30px 0;">
-                <h2 style="font-size: 28px; margin: 10px 0;">Python 二次元区間和</h2>
-                <p style="color: var(--text-muted);">今回の問題は「二次元区間和」である。H 行 W 列 の行列 A があり、2 つの行・列番号の組 {a , b} , {c , d} における区間和 S({a,b} , {c,d}) (a ≦ c , b ≦ d) を以下のように定義する。
-S({a,b} , {c,d}) = A[a][b] + …</p>
+        <a href="http://localhost:1313/posts/dev-python-002/" class="card fade-in-up">
+            <div class="card-img-wrapper">
+                
+                <img src="http://localhost:1313/images/image-04.png" alt="Python 二次元区間和" class="card-img">
+                
+            </div>
+            <div class="card-content">
+                <time class="card-date">2026.04.02</time>
+                <h3 class="card-title">Python 二次元区間和</h3>
             </div>
         </a>
         
-    </section>
-
-    <hr>
-
-    <section style="text-align: center; margin: 100px 0;">
-    <h2 class="section-title" style="font-size: 28px; margin-bottom: 60px; letter-spacing: 0.05em;">
-        映像の旅
-    </h2>
-    <div style="max-width: 800px; margin: 0 auto 40px; padding: 0 20px;">
-        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid #000; background-color: #000;">
-            <iframe
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                src="https://www.youtube.com/embed/pxGV43Tzua8"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-        </div>
+        <a href="http://localhost:1313/posts/dev-python-001/" class="card fade-in-up">
+            <div class="card-img-wrapper">
+                
+                <img src="http://localhost:1313/images/image-03.png" alt="Python 累積和" class="card-img">
+                
+            </div>
+            <div class="card-content">
+                <time class="card-date">2026.03.24</time>
+                <h3 class="card-title">Python 累積和</h3>
+            </div>
+        </a>
+        
+        <a href="http://localhost:1313/posts/blog-001/" class="card fade-in-up">
+            <div class="card-img-wrapper">
+                
+                <img src="http://localhost:1313/images/image-02.png" alt="美言と信言" class="card-img">
+                
+            </div>
+            <div class="card-content">
+                <time class="card-date">2026.03.10</time>
+                <h3 class="card-title">美言と信言</h3>
+            </div>
+        </a>
+        
     </div>
-    </section>
+    <div class="fade-in-up" style="text-align: center; margin-top: 3rem;">
+        <a href="http://localhost:1313/posts/" class="btn-view-more">ALL ARTICLES</a>
+    </div>
+</section>
 
-    <hr>
-
-    <section style="display: flex; gap: 40px; align-items: center; padding: 40px 0;">
-        <img src="http://localhost:1313/images/slide1.png" style="width: 40%; aspect-ratio: 37/32; object-fit: cover; border: 1px solid #a855f7;">
-        <div>
-            <p style="font-size: 14px; color: var(--text-muted);">ブログについて</p>
-            <h2 style="font-family: 'EB Garamond', serif; font-size: 36px; margin: 10px 0;">Author: ishikawa</h2>
-            <p>
-                赤羽在住の情報系大学生。<br class="pc-only-br">
-                Pythonや情報セキュリティを学び、<br class="pc-only-br">
-                食と映像を愛する日々を送ってます。
-            </p>
-            <a href="http://localhost:1313/about" class="btn-action">続きを読む</a>
-        </div>
-    </section>
 </main>
+<footer style="background: #b273f9; color: #ffffff; padding: 10px; text-align: center; margin-top: 10px;">
+    <p>&copy; 2026 いしかわブログ All Rights Reserved.</p>
+</footer>
 
 <script>
-    const container = document.getElementById('hero-gallery');
-    const scrollContent = document.getElementById('scroll-container');
+document.addEventListener("DOMContentLoaded", function() {
     
-    
-    const originalCards = Array.from(scrollContent.children);
-    
-    originalCards.forEach(card => scrollContent.appendChild(card.cloneNode(true)));
-    originalCards.forEach(card => scrollContent.appendChild(card.cloneNode(true)));
-
-    let currentX = 0;
-    let autoSpeed = -1.0; 
-    let isDragging = false;
-    let startX = 0;
-    let dragStartX = 0;
-    let unitWidth = 0;
-
-    function calculateWidths() {
-        const gap = parseInt(window.getComputedStyle(scrollContent).gap) || 0;
-        unitWidth = (originalCards[0].offsetWidth + gap) * originalCards.length;
-        if (currentX === 0) currentX = -unitWidth;
-    }
-
-    window.addEventListener('load', calculateWidths);
-    window.addEventListener('resize', calculateWidths);
-
-    
-    function animate() {
-        if (!isDragging) {
-            currentX += autoSpeed;
-            
-            
-            if (currentX <= -unitWidth * 2) {
-                currentX += unitWidth; 
-            } else if (currentX >= 0) {
-                currentX -= unitWidth; 
-            }
-        }
-
-        scrollContent.style.transform = `translateX(${currentX}px)`;
-        requestAnimationFrame(animate);
-    }
-    requestAnimationFrame(animate);
-
-    
-    const dragStart = (x) => {
-        isDragging = true;
-        startX = x;
-        dragStartX = currentX;
-        autoSpeed = 0;
-        scrollContent.style.transition = 'none';
-    };
-
-    const dragMove = (x) => {
-        if (!isDragging) return;
-        const delta = x - startX;
-        currentX = dragStartX + delta;
-    };
-
-    const dragEnd = () => {
-        isDragging = false;
-        autoSpeed = -1.0;
-    };
-
-    
-    container.addEventListener('mousedown', (e) => dragStart(e.pageX));
-    window.addEventListener('mousemove', (e) => {
-        if (isDragging) dragMove(e.pageX);
-        else handleParallax(e);
-    });
-    window.addEventListener('mouseup', dragEnd);
-
-    
-    container.addEventListener('touchstart', (e) => dragStart(e.touches[0].pageX));
-    container.addEventListener('touchmove', (e) => {
-        if (isDragging) {
-            dragMove(e.touches[0].pageX);
-            if (e.cancelable) e.preventDefault();
-        }
-    }, { passive: false });
-    container.addEventListener('touchend', dragEnd);
-
-    
-    function handleParallax(e) {
-        const inners = document.querySelectorAll('.card-inner');
-        inners.forEach(inner => {
-            const rect = inner.getBoundingClientRect();
-            if (rect.left < window.innerWidth && rect.right > 0) {
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                const mouseX = (e.clientX - centerX) / 25;
-                const mouseY = (e.clientY - centerY) / 25;
-
-                inner.style.transform = `rotateY(${mouseX}deg) rotateX(${-mouseY}deg)`;
-            }
+    const hamburger = document.getElementById('js-hamburger');
+    const navMenu = document.getElementById('js-nav-menu');
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('is-active');
+            navMenu.classList.toggle('is-active');
+        });
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('is-active');
+                navMenu.classList.remove('is-active');
+            });
         });
     }
+
+    
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    const fadeElements = document.querySelectorAll('.fade-in-up');
+    fadeElements.forEach(el => { observer.observe(el); });
+});
 </script>
-<div id="three-bg"></div>
-
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://unpkg.com/three@0.150.0/build/three.module.js"
-  }
-}
-</script>
-
-<script type="module">
-import * as THREE from 'three';
-
-const init = () => {
-    const container = document.getElementById('three-bg');
-    if (!container) return;
-
-    
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-    camera.position.z = 1000;
-
-    
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-    container.appendChild(renderer.domElement);
-
-    
-    const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(1500 * 3);
-    for (let i = 0; i < 1500 * 3; i++) {
-        positions[i] = (Math.random() - 0.5) * 2000;
-    }
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-    const material = new THREE.PointsMaterial({
-        size: 3,
-        color: 0x6a1b9a, 
-        transparent: true,
-        opacity: 0.6
-    });
-
-    const particles = new THREE.Points(geometry, material);
-    scene.add(particles);
-
-    
-    let mouseX = 0, mouseY = 0;
-    document.addEventListener('mousemove', (e) => {
-        mouseX = (e.clientX - window.innerWidth / 2) * 0.5;
-        mouseY = (e.clientY - window.innerHeight / 2) * 0.5;
-    });
-
-    
-    const animate = () => {
-        requestAnimationFrame(animate);
-        particles.rotation.x += 0.0005;
-        particles.rotation.y += 0.0005;
-        
-        
-        camera.position.x += (mouseX - camera.position.x) * 0.05;
-        camera.position.y += (-mouseY - camera.position.y) * 0.05;
-        camera.lookAt(scene.position);
-        
-        renderer.render(scene, camera);
-    };
-    animate();
-
-    
-    window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-};
-
-
-init();
-</script>
-
-<footer style="margin-top: 100px; padding-bottom: 60px; text-align: center; position: relative; z-index: 10;">
-    <hr style="border: none; border-top: 1px solid #a855f7; margin-bottom: 40px;">
-    <p style="font-family: 'EB Garamond', serif; font-size: 18px; letter-spacing: 0.05em; margin-bottom: 10px;">
-        いしかわブログ
-    </p>
-    <p style="font-size: 12px; color: var(--text-muted); letter-spacing: 0.1em;">
-        &copy; 2026 ishikawa. All Rights Reserved.
-    </p>
-</footer>
 </body>
 </html>
 

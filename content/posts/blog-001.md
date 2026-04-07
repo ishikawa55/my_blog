@@ -3,6 +3,7 @@ title = '美言と信言'
 date = 2026-03-10
 tags = ["blog", "essay"]
 categories = ["文芸"]
+image = 'images/image-02.png'
 draft = false
 +++
 

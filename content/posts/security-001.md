@@ -3,6 +3,7 @@ title = 'XSSの脅威'
 date = 2026-03-01
 tags = ["Security", "Hugo", "XSS"]
 categories = ["技術"]
+image = 'images/image-05.png'
 draft = false
 +++
 

@@ -3,6 +3,7 @@ title = 'Python 二次元区間和'
 date = 2026-04-02
 tags = ["dev", "python", "sum"]
 categories = ["技術"]
+image = 'images/image-04.png'
 draft = false
 +++
 

@@ -3,6 +3,7 @@ title = 'Python 累積和'
 date = 2026-03-24
 tags = ["dev", "python", "sum"]
 categories = ["技術"]
+image = 'images/image-03.png'
 draft = false
 +++
 

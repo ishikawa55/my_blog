@@ -1,189 +1,51 @@
 {{ partial "header.html" . }}
-{{ partial "nav.html" . }}
-<main class="container">
-    <section class="hero-gallery" id="hero-gallery">
-    <div class="gallery-scroll-container" id="scroll-container">
-        <div class="gallery-card">
-            <div class="card-inner">
-                <img src="{{ "images/image-02.png" | relURL }}" class="card-img">
-            </div>
-        </div>
-        <div class="gallery-card">
-            <div class="card-inner">
-                <img src="{{ "images/image-03.png" | relURL }}" class="card-img">
-            </div>
-        </div>
-        <div class="gallery-card">
-            <div class="card-inner">
-                <img src="{{ "images/image-04.png" | relURL }}" class="card-img">
-            </div>
-        </div>
-        <div class="gallery-card">
-            <div class="card-inner">
-                <img src="{{ "images/image-05.png" | relURL }}" class="card-img">
-            </div>
-        </div>
-        <div class="gallery-card">
-            <div class="card-inner">
-                <img src="{{ "images/image-06.png" | relURL }}" class="card-img">
-            </div>
-        </div>
-        <div class="gallery-card">
-            <div class="card-inner">
-                <img src="{{ "images/image-07.png" | relURL }}" class="card-img">
-            </div>
-        </div>
+
+<section class="youtube-hero">
+    <div class="youtube-wrapper fade-in-up">
+        <iframe
+        src="https://www.youtube.com/embed/pxGV43Tzua8?autoplay=1&mute=1&loop=1&playlist=pxGV43Tzua8&controls=0&disablekb=1&modestbranding=1&playsinline=1"
+        frameborder="0"
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+        </iframe>
     </div>
-    </section>
+</section>
 
-    <header style="text-align: left; margin-top: 100px; margin-bottom: 40px;">
-        <h2 class="section-title" style="font-size: 28px;">新着記事</h2>
-    </header>
+<section class="section">
+    <h2 class="section-title fade-ip">
+        ブログについて
+    </h2>
+    <div class="fade-in-up" style="max-width: 800px; font-size: 1.1rem; line-height: 2;">
+        <p></p>
+        <p>このブログは日々の備忘録であり、資本主義で<b>如何に幸せを築くか</b>という視点を持ち続けるための</p>
+        <a href="{{ .Site.BaseURL }}about/" class="btn-view-more">VIEW MORE</a>
+    </div>
+</section>
 
-    <section style="position: relative; margin-bottom: 80px;">
-        {{ range first 1 (where .Site.RegularPages "Section" "posts") }}
-        <a href="{{ .RelPermalink }}">
-            <div class="post-summary", style="padding: 30px 0;">
-                <h2 style="font-size: 28px; margin: 10px 0;">{{ .Title }}</h2>
-                <p style="color: var(--text-muted);">{{ .Summary | truncate 150 }}</p>
+<section class="section">
+    <h2 class="section-title fade-in-up">
+        最新の記事
+    </h2>
+    <div class="card-grid">
+        {{ range first 3 (where .Site.RegularPages "Type" "posts") }}
+        <a href="{{ .Permalink }}" class="card fade-in-up">
+            <div class="card-img-wrapper">
+                {{ if .Params.image }}
+                <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="card-img">
+                {{ else }}
+                <div class="card-img" style="background-color: #eee; display: flex; align-items: center; justify-content: center; color: #aaa;">No Image</div>
+                {{ end }}
+            </div>
+            <div class="card-content">
+                <time class="card-date">{{ .Date.Format "2006.01.02" }}</time>
+                <h3 class="card-title">{{ .Title }}</h3>
             </div>
         </a>
         {{ end }}
-    </section>
-
-    <hr>
-
-    <section style="text-align: center; margin: 100px 0;">
-    <h2 class="section-title" style="font-size: 28px; margin-bottom: 60px; letter-spacing: 0.05em;">
-        映像の旅
-    </h2>
-    <div style="max-width: 800px; margin: 0 auto 40px; padding: 0 20px;">
-        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid #000; background-color: #000;">
-            <iframe
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                src="https://www.youtube.com/embed/pxGV43Tzua8"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-        </div>
     </div>
-    </section>
+    <div class="fade-in-up" style="text-align: center; margin-top: 3rem;">
+        <a href="{{ .Site.BaseURL }}posts/" class="btn-view-more">ALL ARTICLES</a>
+    </div>
+</section>
 
-    <hr>
-
-    <section style="display: flex; gap: 40px; align-items: center; padding: 40px 0;">
-        <img src="/images/slide1.png" style="width: 40%; aspect-ratio: 37/32; object-fit: cover; border: 1px solid #a855f7;">
-        <div>
-            <p style="font-size: 14px; color: var(--text-muted);">ブログについて</p>
-            <h2 style="font-family: 'EB Garamond', serif; font-size: 36px; margin: 10px 0;">Author: ishikawa</h2>
-            <p>
-                赤羽在住の情報系大学生。<br class="pc-only-br">
-                Pythonや情報セキュリティを学び、<br class="pc-only-br">
-                食と映像を愛する日々を送ってます。
-            </p>
-            <a href="/about" class="btn-action">続きを読む</a>
-        </div>
-    </section>
-</main>
-
-<script>
-    const container = document.getElementById('hero-gallery');
-    const scrollContent = document.getElementById('scroll-container');
-    
-    // 無限ループの準備 
-    const originalCards = Array.from(scrollContent.children);
-    // 複製
-    originalCards.forEach(card => scrollContent.appendChild(card.cloneNode(true)));
-    originalCards.forEach(card => scrollContent.appendChild(card.cloneNode(true)));
-
-    let currentX = 0;
-    let autoSpeed = -1.0; // 左へ流れる速さ
-    let isDragging = false;
-    let startX = 0;
-    let dragStartX = 0;
-    let unitWidth = 0;
-
-    function calculateWidths() {
-        const gap = parseInt(window.getComputedStyle(scrollContent).gap) || 0;
-        unitWidth = (originalCards[0].offsetWidth + gap) * originalCards.length;
-        if (currentX === 0) currentX = -unitWidth;
-    }
-
-    window.addEventListener('load', calculateWidths);
-    window.addEventListener('resize', calculateWidths);
-
-    // アニメーションループ
-    function animate() {
-        if (!isDragging) {
-            currentX += autoSpeed;
-            
-            // 無限ループの境界判定
-            if (currentX <= -unitWidth * 2) {
-                currentX += unitWidth; // 右側へワープ
-            } else if (currentX >= 0) {
-                currentX -= unitWidth; // 左側へワープ
-            }
-        }
-
-        scrollContent.style.transform = `translateX(${currentX}px)`;
-        requestAnimationFrame(animate);
-    }
-    requestAnimationFrame(animate);
-
-    // ドラッグ / スワイプ操作
-    const dragStart = (x) => {
-        isDragging = true;
-        startX = x;
-        dragStartX = currentX;
-        autoSpeed = 0;
-        scrollContent.style.transition = 'none';
-    };
-
-    const dragMove = (x) => {
-        if (!isDragging) return;
-        const delta = x - startX;
-        currentX = dragStartX + delta;
-    };
-
-    const dragEnd = () => {
-        isDragging = false;
-        autoSpeed = -1.0;
-    };
-
-    // マウスイベント
-    container.addEventListener('mousedown', (e) => dragStart(e.pageX));
-    window.addEventListener('mousemove', (e) => {
-        if (isDragging) dragMove(e.pageX);
-        else handleParallax(e);
-    });
-    window.addEventListener('mouseup', dragEnd);
-
-    // タッチイベント
-    container.addEventListener('touchstart', (e) => dragStart(e.touches[0].pageX));
-    container.addEventListener('touchmove', (e) => {
-        if (isDragging) {
-            dragMove(e.touches[0].pageX);
-            if (e.cancelable) e.preventDefault();
-        }
-    }, { passive: false });
-    container.addEventListener('touchend', dragEnd);
-
-    // パララックス効果
-    function handleParallax(e) {
-        const inners = document.querySelectorAll('.card-inner');
-        inners.forEach(inner => {
-            const rect = inner.getBoundingClientRect();
-            if (rect.left < window.innerWidth && rect.right > 0) {
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                const mouseX = (e.clientX - centerX) / 25;
-                const mouseY = (e.clientY - centerY) / 25;
-
-                inner.style.transform = `rotateY(${mouseX}deg) rotateX(${-mouseY}deg)`;
-            }
-        });
-    }
-</script>
 {{ partial "footer.html" . }}

@@ -12,10 +12,10 @@ draft = false
 
 <div style="position: relative; display: inline-block; width: 100%;">
   <a href="https://tanemaki.iwanami.co.jp/posts/5946">
-    <img src="/images/image-00.png" style="width: 100%; display: block; border: 1px solid #000;">
+    <img src="/images/image-00.png" style="width: 100%; display: block; border: 1px solid #afb1ab;">
   </a>
 
-  <div style="position: absolute; bottom: 15px; right: 15px; background: rgba(255, 255, 255, 0.8); padding: 5px 12px; border: 1px solid #000; font-family: 'Noto Serif JP', serif; font-size: 12px; color: #1a1a1a;">
+  <div style="position: absolute; bottom: 45px; right: 15px; background: rgba(255, 255, 255, 0.8); padding: 5px 12px; border: 1px solid #afb1ab; font-family: 'Noto Sans JP', sans-serif; font-size: min(1.8cqw, 14px); color: #1a1a1a;">
     最果タヒ 第1回 愛は全部キモい ──『ロミオとジュリエット』
   </div>
 </div>
