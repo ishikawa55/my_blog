@@ -20,6 +20,7 @@
     .floating-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); z-index: -1; }
     .header-logo a { text-decoration: none; font-weight: 700; font-size: 1.5rem; color: var(--color-primary); display: flex; align-items: center; transition: opacity 0.3s; }
     .header-logo a:hover { opacity: 0.8; }
+    .header-logo .logo-image { height: 44px; width: auto; display: block; }
 
      
     .hamburger { display: none; background: none; border: none; cursor: pointer; width: 32px; height: 24px; position: relative; z-index: 1001; }
@@ -43,7 +44,7 @@
     .youtube-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
      
-    .section { padding: 120px 4%; max-width: 1200px; margin: 0 auto; }
+    .section { padding: 100px 4%; max-width: 1200px; margin: 0 auto; }
     .section-title { position: relative; font-size: 2rem; font-weight: 550; color: #333333; background-color: #ffffff; padding: 0px 0px 0px 15px; margin-bottom: 3rem; display: inline-block; letter-spacing: 0.05em; }
     .section-title::before { content: ''; position: absolute; top: 0; left: 0; width: 8px; height: 100%; background-color: #0af244;   }
 
@@ -123,7 +124,7 @@
   <header class="floating-header">
     <div class="header-logo">
         <a href="http://localhost:1313/">
-            いしかわブログ
+            <img src="http://localhost:1313/images/home-title.png" class="logo-image">
         </a>
     </div>
 
@@ -150,8 +151,7 @@
     <div class="article-content">
         <p>私たちは日々、言葉を選んで生きている。相手に良く思われたいと<strong>優しい嘘</strong>をつくこともある。今回は、老子が説いた <strong>「信言不美、美言不信」</strong> に着目して言葉から形成される人間関係をいかに良好に保てるかを考えていく。</p>
 <h2 id="信言は美ならず美言は信ならず">「信言は美ならず、美言は信ならず」</h2>
-<p>老子は、真理を突いた誠実な言葉（信言）は耳に心地よいだけの美辞麗句ではないと説いた。逆に、あまりに美しく整えられた言葉には、どこか偽りがあるかもしれないと警鐘を鳴らしています。
-嘘で束の間の幸せを築き
+<p>老子は、真理を突いた誠実な言葉（信言）は耳に心地よいだけの美辞麗句ではないと説いた。逆に、あまりに美しく整えられた言葉には、どこか偽りがあるかもしれないと警鐘を鳴らした。嘘で束の間の幸せを築き
 全ては受け手次第というのも事実であるが、嘘を</p>
 
     </div>
@@ -162,7 +162,7 @@
 </div>
 
 </main>
-<footer style="background: #b273f9; color: #ffffff; padding: 10px; text-align: center; margin-top: 10px;">
+<footer style="background: #ffffff; color: #333333; padding: 10px; text-align: center; margin-top: 10px;">
     <p>&copy; 2026 いしかわブログ All Rights Reserved.</p>
 </footer>
 
