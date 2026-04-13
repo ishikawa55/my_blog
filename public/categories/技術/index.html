@@ -38,7 +38,7 @@
     .nav-menu a:hover::after { width: 100%; }
 
      
-    .youtube-hero { width: 100%; position: relative; padding: 80px 4% 40px; max-width: 1000px; margin: 0 auto;   box-sizing: border-box; }
+    .youtube-hero { width: 100%; position: relative; padding: 40px 4% 40px; max-width: 1000px; margin: 0 auto; box-sizing: border-box; }
     .youtube-wrapper { position: relative; width: 100%; padding-bottom: 56.25%;   height: 0; overflow: hidden; background-color: #000;   }
     .youtube-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
@@ -100,8 +100,9 @@
     @media screen and (max-width: 900px) {
          
         .hamburger { display: block; }
-        .nav-menu { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background-color: var(--color-bg); flex-direction: column; justify-content: center; align-items: center; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .nav-menu.is-active { right: 0; }
+        .nav-menu { position: absolute; top: calc(100% + 5px); left: 0; width: 100%; height: 5vh; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); flex-direction: row; justify-content: space-evenly; align-items: center; gap: 0; opacity: 0; visibility: hidden; transform: translateY(-15px); transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+        .nav-menu.is-active { opacity: 1; visibility: visible; transform: translateY(0); }
+        .nav-menu a { font-size: 0.95rem; font-weight: 700; padding: 10px; }
 
          
         .youtube-hero { padding: 80px 0 40px; }
@@ -150,7 +151,7 @@
         <a href="http://localhost:1313/posts/dev-python-002/" class="card fade-in-up">
             <div class="card-img-wrapper">
                 
-                <div class="card-img" style="background-color: #eee; display: flex; align-items: center; justify-content: center; color: #aaa;">No Image</div>
+                <img src="http://localhost:1313/images/image-04.png" alt="Python 二次元区間和" class="card-img">
                 
             </div>
             <div class="card-content">
@@ -162,7 +163,7 @@
         <a href="http://localhost:1313/posts/dev-python-001/" class="card fade-in-up">
             <div class="card-img-wrapper">
                 
-                <div class="card-img" style="background-color: #eee; display: flex; align-items: center; justify-content: center; color: #aaa;">No Image</div>
+                <img src="http://localhost:1313/images/image-03.png" alt="Python 累積和" class="card-img">
                 
             </div>
             <div class="card-content">
@@ -174,7 +175,7 @@
         <a href="http://localhost:1313/posts/security-001/" class="card fade-in-up">
             <div class="card-img-wrapper">
                 
-                <div class="card-img" style="background-color: #eee; display: flex; align-items: center; justify-content: center; color: #aaa;">No Image</div>
+                <img src="http://localhost:1313/images/image-05.png" alt="XSSの脅威" class="card-img">
                 
             </div>
             <div class="card-content">
