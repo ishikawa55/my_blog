@@ -17,7 +17,7 @@
 
      
     .floating-header { position: fixed; top: 20px; left: 20px; right: 20px; height: var(--header-height); z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; box-sizing: border-box; transition: all 0.3s ease; }
-    .floating-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); z-index: -1; }
+    .floating-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.80); backdrop-filter: blur(8px); box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); z-index: -1; }
     .header-logo a { text-decoration: none; font-weight: 700; font-size: 1.5rem; color: var(--color-primary); display: flex; align-items: center; transition: opacity 0.3s; }
     .header-logo a:hover { opacity: 0.8; }
     .header-logo .logo-image { height: 44px; width: auto; display: block; }
@@ -150,8 +150,17 @@
     </header>
     <div class="article-content">
         <!-- About -->
-<h1 id="ブログ開設">ブログ開設！</h1>
-<p>こんにちは <strong>Ishikawa</strong> です。赤羽在住の大学生で普段は情報系の勉強をしています。完璧主義で、文章を書くときに見栄えを気にすると全く書き進めることが出来ないので、<strong>とりあえず書いてみる</strong>というマインドで書き進めていきます。本が好きで特にSFと恋愛を読むのですが、<strong>単純に面白いから読む</strong>という側面と、言語化できなかった感情を<strong>言語化してくれる作家さんに遇う</strong>という側面があります。恋愛は後者の色が強く、特に大学生になってから<strong>出会いの場</strong>（図書館）に行くことが多くなりました。一目惚れはしないタイプですが、、、個人的に素敵だなと思った方を紹介しておきます。最果タヒさんです。ぜひ下のリンクから読んでみて下さい。<del>いいね数が多いほどスワイプ数が多くなるのは本もマチアプも同じなのかもしれませんね。</del></p>
+<h2 id="ブログ開設">ブログ開設！</h2>
+<p>こんにちは <strong>Ishikawa</strong> です。
+赤羽在住の大学生で普段は情報系の勉強をしています。
+宮城県出身で中高は野球をしていました。
+始めから完璧を目指すと全く書き進めることが出来ないので、<strong>とりあえず書いてみる</strong>というマインドで書き進めていきます。
+本が好きで特にSFと恋愛を読むのですが、<strong>単純に面白いから読む</strong>という側面と、言語化できなかった感情を言語化してくれる<strong>作家さんから有難い御言葉を頂く</strong>という側面があります。
+恋愛は後者の色が強く、特に大学生になってから<strong>出会いの場</strong>（図書館）に行くことが多くなりました。
+一目惚れはしないタイプですが、、、個人的に素敵だなと思った方を紹介しておきます。
+最果タヒさんです。
+ぜひ下のリンクから読んでみて下さい。
+<del>いいね数が多いほどスワイプ数が多くなるのは本もマチアプも同じなのかもしれませんね。</del></p>
 <div style="position: relative; display: inline-block; width: 100%;">
   <a href="https://tanemaki.iwanami.co.jp/posts/5946">
     <img src="http://localhost:1313/images/image-00.png" style="width: 100%; display: block; border: 1px solid #afb1ab;">
@@ -161,7 +170,7 @@
   </div>
 </div>
 <p>自分の好きなモノを適当に書いていこうと思うので、雑多なブログになると思いますが付き合って頂けると幸いです。</p>
-<h2 id="最近のタスク">最近のタスク</h2>
+<h3 id="最近のタスク">最近のタスク</h3>
 <!-- <div style="text-align: center; margin: 1.5rem 0;"> -->
   <div style="display: inline-block; text-align: left;">
     <label style="display: block; margin-bottom: 0.5rem;">
@@ -170,7 +179,7 @@
     </label>
     <label style="display: block;">
       <input type="checkbox" class="nes-checkbox" disabled />
-      <span>基本情報技術者試験</span>
+      <span>大学の学業</span>
     </label>
     <label style="display: block;">
       <input type="checkbox" class="nes-checkbox" disabled />
@@ -191,7 +200,7 @@
 </div>
 
 </main>
-<footer style="background: #ffffff; color: #333333; padding: 10px; text-align: center; margin-top: 10px;">
+<footer style="background: var(--color-bg); color: #333333; padding: 10px; text-align: center; margin-top: 10px;">
     <p>&copy; 2026 いしかわブログ All Rights Reserved.</p>
 </footer>
 

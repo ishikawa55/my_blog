@@ -17,7 +17,7 @@
 
      
     .floating-header { position: fixed; top: 20px; left: 20px; right: 20px; height: var(--header-height); z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; box-sizing: border-box; transition: all 0.3s ease; }
-    .floating-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); z-index: -1; }
+    .floating-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.80); backdrop-filter: blur(8px); box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); z-index: -1; }
     .header-logo a { text-decoration: none; font-weight: 700; font-size: 1.5rem; color: var(--color-primary); display: flex; align-items: center; transition: opacity 0.3s; }
     .header-logo a:hover { opacity: 0.8; }
     .header-logo .logo-image { height: 44px; width: auto; display: block; }
@@ -44,7 +44,7 @@
     .youtube-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
      
-    .section { padding: 120px 4%; max-width: 1200px; margin: 0 auto; }
+    .section { padding: 100px 4%; max-width: 1200px; margin: 0 auto; }
     .section-title { position: relative; font-size: 2rem; font-weight: 550; color: #333333; background-color: #ffffff; padding: 0px 0px 0px 15px; margin-bottom: 3rem; display: inline-block; letter-spacing: 0.05em; }
     .section-title::before { content: ''; position: absolute; top: 0; left: 0; width: 8px; height: 100%; background-color: #0af244;   }
 
@@ -187,7 +187,7 @@
 </div>
 
 </main>
-<footer style="background: #b273f9; color: #ffffff; padding: 10px; text-align: center; margin-top: 10px;">
+<footer style="background: var(--color-bg); color: #333333; padding: 10px; text-align: center; margin-top: 10px;">
     <p>&copy; 2026 いしかわブログ All Rights Reserved.</p>
 </footer>
 

@@ -17,7 +17,7 @@
 
      
     .floating-header { position: fixed; top: 20px; left: 20px; right: 20px; height: var(--header-height); z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; box-sizing: border-box; transition: all 0.3s ease; }
-    .floating-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); z-index: -1; }
+    .floating-header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.80); backdrop-filter: blur(8px); box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); z-index: -1; }
     .header-logo a { text-decoration: none; font-weight: 700; font-size: 1.5rem; color: var(--color-primary); display: flex; align-items: center; transition: opacity 0.3s; }
     .header-logo a:hover { opacity: 0.8; }
     .header-logo .logo-image { height: 44px; width: auto; display: block; }
@@ -180,7 +180,7 @@
                 
             </div>
             <div class="card-content">
-                <time class="card-date">2026.03.10</time>
+                <time class="card-date">2026.03.16</time>
                 <h3 class="card-title">美言と信言</h3>
             </div>
         </a>
@@ -192,8 +192,20 @@
                 
             </div>
             <div class="card-content">
-                <time class="card-date">2026.03.01</time>
+                <time class="card-date">2026.03.10</time>
                 <h3 class="card-title">XSSの脅威</h3>
+            </div>
+        </a>
+        
+        <a href="http://localhost:1313/posts/video-001/" class="card fade-in-up">
+            <div class="card-img-wrapper">
+                
+                <img src="http://localhost:1313/images/image-06.png" alt="私と映像" class="card-img">
+                
+            </div>
+            <div class="card-content">
+                <time class="card-date">2026.03.01</time>
+                <h3 class="card-title">私と映像</h3>
             </div>
         </a>
         
@@ -201,7 +213,7 @@
 </div>
 
 </main>
-<footer style="background: #ffffff; color: #333333; padding: 10px; text-align: center; margin-top: 10px;">
+<footer style="background: var(--color-bg); color: #333333; padding: 10px; text-align: center; margin-top: 10px;">
     <p>&copy; 2026 いしかわブログ All Rights Reserved.</p>
 </footer>
 
