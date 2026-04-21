@@ -9,11 +9,11 @@
     <lastBuildDate>Wed, 04 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/%E5%93%B2%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title></title>
+      <title>私の哲学</title>
       <link>http://localhost:1313/posts/idea-001/</link>
       <pubDate>Wed, 04 Mar 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/idea-001/</guid>
-      <description>サイトカスタマイズをしていたところ、セキュリティの壁に当たったので記録しておく。</description>
+      <description>高校時代 高校生の頃にモーショングラフィックスに出会い、映像が好きになりました。 モーショングラフィックスは静止画（グラフィックス）に動き（モーション）を加える表現手法です。 映像は写真の連続であるという概念に当時強く共感したことを覚えています。&#xA;映像制作歴は今年で6年目になりますが、処女作は高1のクラスムービーです。 好きな音楽に音ハメしただけのクラスムービー（ちょっとリッチなスライドショー）を意気揚々にグループラインに挙げていた過去を思い出すと、少し香ばしい気持ちになります。</description>
     </item>
   </channel>
 </rss>
