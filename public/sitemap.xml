@@ -58,5 +58,7 @@
   </url><url>
     <loc>http://localhost:1313/posts/video-001/</loc>
     <lastmod>2026-03-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/idea-001/</loc>
   </url>
 </urlset>
