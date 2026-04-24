@@ -6,14 +6,21 @@
     <description>Recent content in Idea on いしかわブログ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 04 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 23 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/idea/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>『救われてんじゃねえよ』（著者: 上村裕香）</title>
+      <link>http://localhost:1313/posts/book-001/</link>
+      <pubDate>Thu, 23 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/book-001/</guid>
+      <description>概要 執筆中</description>
+    </item>
     <item>
       <title>私の哲学</title>
       <link>http://localhost:1313/posts/idea-001/</link>
-      <pubDate>Wed, 04 Mar 2026 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 22 Apr 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/idea-001/</guid>
-      <description>0ベクトル思想 高校生の頃にモーショングラフィックスに出会い、映像が好きになりました。 モーショングラフィックスは静止画（グラフィックス）に動き（モーション）を加える表現手法です。 映像は写真の連続であるという概念に当時強く共感したことを覚えています。&#xA;映像制作歴は今年で6年目になりますが、処女作は高1のクラスムービーです。 好きな音楽に音ハメしただけのクラスムービー（ちょっとリッチなスライドショー）を意気揚々にグループラインに挙げていた過去を思い出すと、少し香ばしい気持ちになります。</description>
+      <description>当記事を通じて、私の内側を少しでも共有できたら幸いです。&#xA;幸せの定義 感情の起伏&#xA;挑戦のために保険を まず、博打は嫌いです。なるべく勝てる戦しかしません。&#xA;病まない処方箋 父に教えて頂いた 0ベクトル思想 という考え方がある。この思想は、、、。</description>
     </item>
   </channel>
 </rss>
