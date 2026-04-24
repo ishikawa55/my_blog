@@ -51,3 +51,6 @@ AviUtl のレイヤー上限が100だったので、エフェクトを効率よ�
 
 ## 編集画面
 
+<div style="position: relative; display: inline-block; width: 100%;">
+    <img src="/images/edit-screen.png" style="width: 100%; display: block; border: 1px solid #afb1ab;">
+</div>
